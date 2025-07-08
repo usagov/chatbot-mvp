@@ -258,7 +258,7 @@ main[data-pagetype="Benefits Category Search"]{
 
       &::after {
         content: "";
-        background-image: url("/themes/custom/usagov/images/right-arrow.svg");
+        background-image: url("/site/usagov/chatbot-mvp/themes/custom/usagov/images/right-arrow.svg");
         background-repeat: no-repeat;
         width: 40px;
         height: 40px;
@@ -293,35 +293,35 @@ main[data-pagetype="Benefits Category Search"]{
       &.benefit-finder-icon--death,
       &.benefit-finder-icon--es-death {
         &::before {
-          background-image: url("/themes/custom/usagov/images/Death-of-a-loved-one-icon.svg");
+          background-image: url("/site/usagov/chatbot-mvp/themes/custom/usagov/images/Death-of-a-loved-one-icon.svg");
         }
       }
 
       &.benefit-finder-icon--financial,
       &.benefit-finder-icon--es-financial {
         &::before {
-          background-image: url("/themes/custom/usagov/images/Financial-shock-icon.svg");
+          background-image: url("/site/usagov/chatbot-mvp/themes/custom/usagov/images/Financial-shock-icon.svg");
         }
       }
 
       &.benefit-finder-icon--disability,
       &.benefit-finder-icon--es-disability {
         &::before {
-          background-image: url("/themes/custom/usagov/images/Disability-icon.svg");
+          background-image: url("/site/usagov/chatbot-mvp/themes/custom/usagov/images/Disability-icon.svg");
         }
       }
 
       &.benefit-finder-icon--retirement,
       &.benefit-finder-icon--es-retirement  {
         &::before {
-          background-image: url("/themes/custom/usagov/images/Retirement-icon.svg");
+          background-image: url("/site/usagov/chatbot-mvp/themes/custom/usagov/images/Retirement-icon.svg");
         }
       }
 
       &.benefit-finder-icon--all-benefits,
       &.benefit-finder-icon--es-all-benefits {
         &::before {
-          background-image: url("/themes/custom/usagov/images/topics/ICONS_Life_events.svg");
+          background-image: url("/site/usagov/chatbot-mvp/themes/custom/usagov/images/topics/ICONS_Life_events.svg");
         }
       }
     }
