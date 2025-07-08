@@ -1,0 +1,22 @@
+multivalue_hint,contactLinks_1_text,contactLinks_1_url,contactLinks_2_text,contactLinks_2_url,contactLinks_3_text,contactLinks_3_url,contactLinks_4_text,contactLinks_4_url,contactLinks_5_text,contactLinks_5_url,contactLinks_6_text,contactLinks_6_url,contactLinks_7_text,contactLinks_7_url,contactLinks_8_text,contactLinks_8_url,contactLinks_9_text,contactLinks_9_url,infoForContactCenter,officeLinks_10_text,officeLinks_10_url,officeLinks_11_text,officeLinks_11_url,officeLinks_12_text,officeLinks_12_url,officeLinks_13_text,officeLinks_13_url,officeLinks_14_text,officeLinks_14_url,officeLinks_15_text,officeLinks_15_url,officeLinks_16_text,officeLinks_16_url,officeLinks_17_text,officeLinks_17_url,officeLinks_18_text,officeLinks_18_url,officeLinks_1_text,officeLinks_1_url,officeLinks_2_text,officeLinks_2_url,officeLinks_3_text,officeLinks_3_url,officeLinks_4_text,officeLinks_4_url,officeLinks_5_text,officeLinks_5_url,officeLinks_6_text,officeLinks_6_url,officeLinks_7_text,officeLinks_7_url,officeLinks_8_text,officeLinks_8_url,officeLinks_9_text,officeLinks_9_url,websiteLinks_1_text,websiteLinks_1_url,websiteLinks_2_text,websiteLinks_2_url,websiteLinks_3_text,websiteLinks_3_url,websiteLinks_4_text,websiteLinks_4_url,Title,Acronym,Agency,"Agency Tags",Alpha-order-name,"Archive Date","CAH Description","CFO Agency","Child Records",City,Comments,"Contact links","Date Last Reviewed","Directory type","Donated money",Email,"English Toggle Node","English Translation Name","For use by","Form links","Group by","In-person links","Inventory URL",Language,"More info (for contact  center only)","Notify Marketing Team",Owner,"Parent Record","Schedule Publish","See also","Show on AZ Index","SMS services","SOCAP member","Spanish Toggle Node",State,"State Details","Street 1","Street 2",Subdivision,Summary,Synonym,"Toll free number","Top Tasks","TTY number","Website links","Workflow Notification Email","Workflow State (for search indexing)",ZIP,"Asset Topic Taxonomy","Government branch",UUID,Path,"Friendly URL","Phone number","Post date","Updated date","English Toggle","Spanish Toggle",Nid,Synonym_Count,langcode,alias,phonehint,"Street 3",phone_1,toll_1,tty_1,toll_2,toll_3,toll_4,tty_2,tty_3,phone_2,phone_3
+contact_2-website_3-office_1,"Contact the U.S. Patent and Trademark Office",http://www.uspto.gov/about/contacts/index.jsp,"Staff Directory",http://portal.uspto.gov/external/portal/emlocator,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"U.S. Patent and Trademark Office",http://www.uspto.gov/,"Trademarks Department",http://www.uspto.gov/trademarks,"Patents Department",http://www.uspto.gov/patents,,,"U.S. Patent and Trademark Office",,DOC-Commerce,DOC-Commerce,"Department of Commerce-USPTO",,"The USPTO grants patents for intellectual property and trademarks for brand names symbols, protecting the rights of inventors and designers.",No,,Alexandria,"7/1/13 Edited agency address as requested by agency-JM
+6/15/09 Added mailing address and email. JR
+
+Patents:  Commissioner for Patents
+PO Box 1450
+Alexandria, VA  22313-1450
+Fax: 703-872-9306
+Email: usptoinfo@uspto.gov
+Trademarks: Commissioner for Trademarks
+PO Box 16471
+Arlington, VA 22215-1471
+Attention MPU
+Fax: 571-273-9250
+Email: TrademarkAssistanceCenter@uspto.gov
+7/10/10 JZ Added brief description.
+
+6/6/11 SW - conferred with Marietta then deleted info on patents and trademarks.  Changed address, email address, took out office of general counsel
+3/13/18 MJ verfied via https://www.uspto.gov/about-us/contact-us/e-mail-us","Contact the U.S. Patent and Trademark Office 
+Staff Directory",,"Federal Agencies",No,usptoinfo@uspto.gov,,,"USA.gov, NCC Knowledge Base, Print CAH","Patent Formshttps://www.uspto.gov/patent/patents-forms",None,,,English,,No,joanne.mcgovern@gsa.gov,"U.S. Department of Commerce",,,Yes,,No,210765,VA,,,"600 Dulany St.",,"The U.S. Patent and Trademark Office is the agency responsible for granting U.S. patents and registering trademarks.","Patent and Trademark Office","1-800-786-9199 (8:30 am - 8:00 pm, ET)",,1-571-272-9950,"U.S. Patent and Trademark Office 
+Trademarks Department
+Patents Department",,,22314,,"Executive Department Sub-Office/Agency/Bureau",9e1a5bf8-e5c8-480a-8388-3eb7d71bfebb,/content/us-patent-and-trademark-office,,1-571-272-1000,1428951945,1577996947,,"Oficina de Patentes y Marcas Registradas",209719,1,en,/agencies/us-patent-and-trademark-office,phone_1-toll_1-tty_1,,1-571-272-1000,"1-800-786-9199 (8:30 am - 8:00 pm, ET)",1-571-272-9950,,,,,,,
