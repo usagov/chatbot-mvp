@@ -1,0 +1,315 @@
+@use "usagov-variables" as *;
+@use "uswds-core" as *;
+
+// Directory Container
+.usagov-directory-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.usagov-directory-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 35rem;
+}
+
+.usagov-directory-container-az {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(41px, 1fr));
+  gap: 16px;
+}
+
+.usagov-directory-container .usagov-directory-container-az li {
+  a,
+  div,
+  a:visited {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 44px;
+    height: 44px;
+    text-decoration: none;
+    box-sizing: border-box;
+    @include u-bg('cyan-10');
+
+    border: 2px solid $secondary-border;
+    border-radius: 0.01rem;
+    @include u-font-size('sans', 'lg');
+    @include u-text('gray-90');
+    @include u-text('semibold');
+
+    transition: box-shadow 200ms, background-color 200ms;
+  }
+
+  a:hover {
+    background-color: $secondary-background;
+    border:2px solid $secondary-border;
+  }
+
+  div.is-active {
+    box-shadow: 0 0 0 0.15rem color('gray-90');
+    background-color: white;
+    border:none;
+  }
+
+  div.is-active:hover {
+    box-shadow: 0 0 0 0.15rem color('gray-90');
+    background-color: white;
+  }
+}
+
+a.intro-links,
+a.intro-links:hover,
+a.intro-links:visited,
+a.intro-links:active {
+  text-decoration: none;
+  @include u-text('gray-90');
+}
+
+hr.bl-divider {
+  background: $medium-gray;
+  border: 0;
+  height: 0.15rem;
+  width: 100%;
+}
+
+// Styling of the accordion field header
+.agency-index-label {
+  padding-right: 8px;
+  margin-block-end: 0 !important;
+}
+
+// Styling of the first accordion field
+.agency-first-field {
+  display: block !important;
+  margin-top: 2.2em !important;
+  margin-bottom: 2.2em !important;
+}
+
+// Styling of the accordion fields
+.agency-fields {
+  display: block !important;
+  margin-top: 2.2em;
+  margin-bottom: 2.2em;
+}
+
+// Styling of a list inside an accordion section
+div.field--name-field-offices-near-you> ul {
+  margin-top: 10px;
+}
+
+// Styling of the content inside an accordion section
+.field--name-field-website,
+.field--name-field-phone-number,
+.field--name-field-contact-link {
+  margin-top: 10px;
+}
+
+.usagov-directory-accordion-container ul {
+  padding-left: 25px;
+}
+
+// Search Bar
+.fed-directory-search-bar {
+  height: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  outline: 2px solid color('cyan-50v');
+  border-radius: 0 0.25rem 0.25rem 0;
+  @include u-bg('cyan-10');
+
+  max-width: 20em;
+  margin: 1rem auto 0;
+
+  input::placeholder {
+    @include u-text('gray-50');
+    @include u-text('medium');
+
+  }
+
+  [type=search]{
+    border-radius: 0;
+    padding-right: 0;
+  }
+
+}
+
+.fed-directory-search-input {
+  @include u-font-size('sans', 'xs');
+  @include u-text('gray-90');
+  @include u-bg('white');
+
+  outline: none;
+  border-style: none;
+  line-height: 1.5;
+}
+
+.fed-directory-search-btn {
+  @include u-bg('cyan-10');
+
+  outline: none;
+  cursor: pointer;
+  border-style: none;
+  outline-style: none;
+  transition: background-color 200ms;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  min-width: 3rem;
+  padding: 0 0.75rem;
+
+  // font-size: 1.1rem;
+
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: block;
+    filter: invert(9%) sepia(2%) saturate(18%) hue-rotate(314deg) brightness(99%) contrast(96%);
+  }
+}
+
+.fed-directory-search-btn:hover {
+  background-color: $secondary-background;
+}
+
+.fed-directory-search-btn:focus {
+  z-index:1;
+}
+
+@media (min-width: 480px) {
+  .usagov-directory-container {
+    padding: 1rem 2.8rem;
+    box-shadow: inset 0 0 0 0.15rem $medium-gray;
+  }
+}
+
+// Letter Heading
+.usagov-directory-letter-heading {
+  @include u-font('sans', 'xl');
+
+  text-align: center;
+  line-height: 57px;
+  outline: solid 0.15rem color('gray-90');
+  width: 57px;
+  height: 57px;
+}
+
+// Accordion
+.usa-fed-accordion__content {
+  p.h-bold {
+    @include u-text('bold');
+  }
+
+  div {
+    display: flex;
+
+    p:first-child {
+      @include u-text('bold');
+    }
+  }
+}
+
+div div.field--name-field-offices-near-you>ul>li {
+  line-height: 2;
+}
+
+// Bottom Navigation
+.usagov-directory-bottom-nav-container {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: 2rem;
+}
+
+.usagov-directory-bottom-nav-group {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 0.1rem;
+  background-color: none;
+  outline: none;
+  box-shadow: none;
+
+  a.nav-letter,
+  a.nav-letter:visited {
+    text-decoration: none;
+    text-align: center;
+    line-height: 57px;
+    @include u-font-size('sans', 'xl');
+    @include u-text('gray-90', !important);
+
+    outline: solid 0.15rem color('cyan-50v');
+    @include u-bg('cyan-10');
+    @include u-text('semibold');
+
+    width: 57px;
+    height: 57px;
+    margin-left: 4px;
+    margin-right: 4px;
+    transition-property: outline, color, background-color;
+    transition-duration: 200ms;
+  }
+
+  a.nav-letter:hover {
+    outline: 2px solid $secondary-border;
+    @include u-text('black');
+
+    background-color: $secondary-background;
+  }
+
+  a.nav-letter:focus {
+    outline: 0.25rem solid color('orange-50v');
+  }
+}
+
+.usagov-directory-bottom-nav-arrow {
+  text-decoration: none;
+}
+
+// Directory - Detail Page
+.usagov-directory-table {
+  border-collapse: collapse;
+  width: 100%;
+  padding-top: 25px;
+  line-height: 2;
+
+  div {
+    border: solid 1.5px $fed-gray-border;
+    margin: 0;
+    padding: 10px 25px;
+  }
+
+  div:nth-child(odd) {
+    background-color: $fed-white-background;
+  }
+}
+
+.usagov-directory-table h2 {
+  margin:0;
+  margin-bottom: 0.2rem;
+}
+
+.usagov-directory-table h3 {
+  margin: 0;
+  margin-bottom: 0.2rem;
+  @include u-text('bold');
+}
+
+.usagov-directory-table p {
+  margin: 0;
+}
+
+.usagov-directory-table ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.usagov-dir-padding {
+  padding-top: 20px;
+}

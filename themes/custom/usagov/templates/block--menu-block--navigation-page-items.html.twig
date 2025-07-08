@@ -1,0 +1,97 @@
+{{ attach_library('usagov/lazyLoadBgImage') }}
+{% set lang = node.langcode.value %}
+
+{% if pagetype == "Navigation Cards Page" or pagetype == "Life Events" %}
+
+  <div class="usagov-cards usagov-cards-bg">
+    <ul class="usa-card-group grid-row grid-gap-1">
+      {% for item in nav_page_items %}
+        <li class="tablet:grid-col-6 tablet-lg:grid-col-4 usa-card">
+          <a href="{{ item.url }}" class="usa-card__container usagov-card text-no-underline">
+            <header class="usa-card__header">
+              <h2 class="usa-card__heading usagov-card__heading">{{ item.title }}</h2>
+            </header>
+            <div class="usa-card__body padding-top-0 color-off-black">
+              {% if item.description|trim is not empty %}
+                <p>{{ item.description }}</p>
+              {% endif %}
+            </div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{% elseif pagetype == "Navigation Page" %}
+
+  <ul class="usa-list usa-list--unstyled">
+    {% for item in nav_page_items %}
+      <li class="usagov-navpage-item">
+        <a href="{{ item.url }}" class="text-no-underline">
+          <div class="usa-card__header">
+            <h2 class="usa-card__heading usagov-card__heading">{{ item.title }}</h2>
+          </div>
+          <div class="usa-card__body padding-top-0 usa-prose color-off-black">
+            {% if item.description|trim is not empty %}
+              <p>{{ item.description }}</p>
+            {% endif %}
+          </div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+
+{% elseif pagetype == "Life Events Landing Page" %}
+
+  <div class="usagov-cards margin-top-3">
+    <ul class="usa-card-group">
+      {% for item in nav_page_items %}
+        <li class="tablet:grid-col-4 usa-card">
+          <a href="{{ item.url }}" class="usa-card__container usagov-card text-no-underline">
+            <div class="life-events-landing-page-card-image" style="background-image: url({{item.navigation_banner_image|image_style('webp')}})"></div>
+            <div class="life-events-landing-page-card-title">{{ item.title }}</div>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+{% elseif pagetype == "Home Page" %}
+
+  <div class="all-topics-background">
+    <div class="smaller-width-div">
+      <ul class="homepage-card-group usa-card-group">
+        {% for item in nav_page_items|filter(item => item.promote) %}
+          <li class="homepage-card usa-card__container">
+            <a href="{{ item.url }}">
+              <div class="homepage-icon topic-icon {{ item.css_icon | trim}} lazyload" data-bg="{{ item.css_icon | trim }}"></div>
+              <div class="usa-card__header homepage-card_header">
+                <h2>{{ item.title }}</h2>
+              </div>
+              <div class="usa-card__body homepage-card-description">
+                {% if item.description is not empty %}
+                  <p>{{ item.description }}</p>
+                {% endif %}
+              </div>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+{% endif %}
+
+{% if pagetype == "Navigation Cards Page" or pagetype == "Life Events" or pagetype == "Life Events Landing Page" %}
+  {% if lang == "es" %}
+    <p>
+      <span class="text-bold">¿Busca algo más?</span>
+      <a id="something-else" href="/es#all-topics-header">Encuentre más temas y servicios</a>
+    </p>
+  {% else %}
+    <p>
+      <span class="text-bold">Looking for something else?</span>
+      <a id="something-else" href="/#all-topics-header">Explore all topics and services</a>
+    </p>
+  {% endif %}
+{% endif %}

@@ -1,0 +1,132 @@
+@use "usagov-variables" as *;
+@use "uswds-core" as *;
+
+// $life-events: var( $usagov-variables, life-events );
+[data-pagetype="Life Events"],
+[data-pagetype="Life Events Landing Page"] {
+  h1 {
+    @include u-bg('blue-80v');
+    @include u-text('white');
+
+    padding: 15px 45px 8px 35px;
+    width: fit-content;
+
+    // border-radius: 3px;
+  }
+
+  .usagov-hero {
+    border-top: none;
+    margin-top: 0;
+  }
+
+  .usa-prose > h1 + * {
+    margin-top: 0;
+  }
+
+  .usagov-cards {
+    max-width: 960px;
+    @include u-bg('gray-4');
+
+    margin-right: 0;
+  }
+}
+
+[data-pagetype="Life Events Landing Page"] {
+  .usagov-card {
+    @include u-border('white');
+  }
+}
+
+.le-image {
+  height: 315px;
+}
+
+.usa-card--flag {
+  .usa-card__container {
+    @include u-bg('blue-80v');
+    @include u-text('white');
+
+    border: none;
+    border-radius: 0;
+  }
+
+  .usa-card__body {
+    @include u-text('white');
+
+    padding-bottom: 1.5rem;
+  }
+
+  .usa-card__img,
+  &.usa-card--media-right .usa-card__img {
+    border-radius: unset;
+  }
+
+  .usa-card__container .usa-card__header .usa-card__heading .card-link {
+    @include u-text('white');
+
+    text-decoration-line: underline;
+    text-decoration-thickness: 7px;
+    text-decoration-color: $cyan-text-decoration;
+    text-decoration-skip-ink: none;
+  }
+
+  .usa-card__heading {
+    line-height: 1.8em;
+  }
+
+  .usa-card__header {
+    padding-bottom: 0.5rem;
+  }
+
+  &:hover {
+    .usa-card__img img {
+      opacity: .8;
+    }
+
+    .usa-card__container {
+      @include u-bg('blue-70v');
+    }
+  }
+}
+
+.paragraph--type--uswds-card-group-flag .usa-card__container.make-link:hover {
+  box-shadow: none;
+}
+
+.paragraph--type--uswds-card-group-flag .usa-card__container.make-link:focus-within {
+  outline: 0.25rem solid  $blue-outer-focus;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.paragraph--type--uswds-card-group-flag .usa-card__container .usa-card__header .card-link:focus {
+  outline: 0.25rem solid  $blue-outer-focus;
+  outline-offset: 0;
+  box-shadow: none;
+}
+
+.life-events-landing-page-card-image {
+  aspect-ratio: 5/2;
+  background-size: cover;
+}
+
+.life-events-landing-page-card-title {
+  display: flex;
+  align-items: center;
+  @include u-bg('blue-80v');
+  @include u-text('white');
+
+  height: 3.5rem;
+  padding: 1rem;
+}
+
+.usa-card:hover {
+  .life-events-landing-page-card-image {
+    filter: contrast(0.5) brightness(1.5);
+  }
+
+  .life-events-landing-page-card-title {
+    @include u-bg('cyan-10');
+    @include u-text('blue-warm-70v');
+  }
+}

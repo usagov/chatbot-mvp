@@ -1,0 +1,14 @@
+{% if node.langcode.value %}
+  {% set lang = node.langcode.value %}
+{% elseif language.id %}
+  {% set lang = language.id %}
+{% endif %}
+<footer class="{{ footer_classes }}">
+	{% if lang == 'es' %}
+		{{ drupal_menu('primary-footer-spanish', expand=true) }}
+	{% else %}
+		{{ drupal_menu('primary-footer', expand=true) }}
+	{% endif %}
+	{% include '@usagov/footer-secondary.html.twig' %}
+	{% include '@usagov/footer-identifier.html.twig' %}
+</footer>

@@ -1,0 +1,30 @@
+{
+  "name": "usagov_sass",
+  "version": "1.0.0",
+  "description": "This sub-theme requires compiling of the USWDS CSS and also the assets folder for javascript.",
+  "main": "index.js",
+  "scripts": {
+    "init": "npx gulp init",
+    "build": "npx gulp update",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "npx gulp watch",
+    "lint": "npx stylelint sass/**.scss; npx eslint scripts/*",
+    "scss": "npx gulp compileSass",
+    "eslint": "npx gulp compileSass"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@uswds/compile": "^1.1.0",
+    "eslint": "^9.0.0",
+    "prettier": "2.7.1",
+    "stylelint": "^14.9.1",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^4.0.0"
+  },
+  "dependencies": {
+    "@accessible360/accessible-slick": "^1.0.1",
+    "@uswds/uswds": "3.0.1",
+    "del": "^6.1.1"
+  }
+}

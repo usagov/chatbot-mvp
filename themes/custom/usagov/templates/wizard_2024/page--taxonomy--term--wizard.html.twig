@@ -1,0 +1,20 @@
+{# Custom top nav, main class, sidenav, and below body region for wizards. #}
+
+{% extends "page.html.twig" %}
+{% block top_nav %}
+  {% if lang =='es' %}
+    {% include '@usagov/wizard_2024/wizard-top-nav-es.html.twig' %}
+  {% else %}
+    {% include '@usagov/wizard_2024/wizard-top-nav.html.twig' %}
+  {% endif %}
+{% endblock %}
+
+{% block main %}
+<main class="main-content usa-layout-docs usa-section usagov-wizard {{ main_classes }}" id="main-content" data-pagetype="{{term_name}}">
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block additional_body %}
+{% endblock %}

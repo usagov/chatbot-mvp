@@ -1,0 +1,92 @@
+{% set image_uri = node.field_homepage_banner|file_uri %}
+<style>
+	.banner-div {
+		background-image: url({{file_url(image_uri|image_style('max_480w') )}});
+	}
+
+	/* Tablet 1x */
+	@media(min-width: 640px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_640w')) }});
+		}
+	}
+
+	/* Mobile 1.5x */
+	@media(min-width: 720px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_720w')) }});
+		}
+	}
+
+	/* Tablet 1.5x & Mobile 2x */
+	@media(min-width: 960px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_960w')) }});
+		}
+	}
+
+	/* Desktop 1x */
+	@media(min-width: 1024px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_1024w')) }});
+		}
+	}
+
+	/* Tablet 2x */
+	@media(min-width: 1280px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_1280w')) }});
+		}
+	}
+
+	/* Mobile 3x */
+	@media(min-width: 1440px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_1440w')) }});
+		}
+	}
+
+
+	/* Desktop 1.5x */
+	@media(min-width: 1536px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_1536w')) }});
+		}
+	}
+
+	/* Tablet 3x */
+	@media(min-width: 1920px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_1920w')) }});
+		}
+	}
+
+	/* Desktop 2x */
+	@media(min-width: 2048px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_2048w')) }});
+		}
+	}
+
+	/* Desktop 3x */
+	@media(min-width: 3072px) {
+		.banner-div {
+			background-image: url({{ file_url(image_uri|image_style('max_3072w')) }});
+		}
+	}
+</style>
+
+<div class="banner-wrapper">
+	<div class="banner-div"></div>
+</div>
+
+<div class="welcome-box-wrapper">
+	<div class="welcome-box">
+		<h1 id="skip-to-h1">
+			{{ node.title.value }}
+		</h1>
+		<p>
+			{{ node.body.value | raw}}
+		</p>
+	</div>
+</div>

@@ -1,0 +1,92 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a list of summary lines.
+ *
+ * Available variables:
+ * - rows: The rows contained in this view.
+ *   Each row contains:
+ *   - url: The summary link URL.
+ *   - link: The summary link text.
+ *   - count: The number of items under this grouping.
+ *   - attributes: HTML attributes to apply to each row.
+ *   - active: A flag indicating whether the row is active.
+ * - options: Flags indicating how the summary should be displayed.
+ *   This contains:
+ *    - count: A flag indicating whether the count should be displayed.
+ *
+ * @see template_preprocess_views_view_summary()
+ *
+ * @ingroup themeable
+*/
+#}
+{% set current_letter = alpha_context.current %}
+
+{% set lang = rows[0]._entity.langcode.value %}
+{% if lang == "en" %}
+  {% set translations = {
+    'agencyindex': '/agency-index',
+    'agencySearchAffiliateID': 'usagov_en_az',
+    'search': 'Search',
+    'agencySearchLabel': 'Search agencies and departments',
+    'form_id':'usagov_en_az'
+  } %}
+{% else %}
+  {% set translations = {
+    'agencyindex': '/es/indice-agencias',
+    'agencySearchAffiliateID': 'usagov_es_az',
+    'search': 'Buscar',
+    'agencySearchLabel': 'Busque una agencia o departamento',
+    'form_id':'usagov_es_az'
+  } %}
+{% endif %}
+
+<div class="usagov-directory-page-container">
+
+  <div id="usagov-directory-container" class="usagov-directory-container">
+    <ul class="usagov-directory-container-az">
+      {% for row in rows %}
+        <li>
+          {% set row_is_active = current_letter == row.link %}
+          {% if row_is_active %}
+            <div {{row.attributes.addClass("is-active")}}>{{ row.link }}</div>
+          {% else %}
+            {% if row.link == "A" or row.link == "a" %}
+              <a href="{{ translations.agencyindex }}#{{ row.link }}">{{ row.link }}</a>
+            {% else %}
+              <a href="{{ translations.agencyindex }}?letter={{ row.link|lower }}#{{ row.link }}">{{ row.link }}</a>
+            {% endif %}
+          {% endif %}
+          {% if options.count %}
+            ({{ row.count }})
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <hr class="bl-divider">
+    <!-- Search Bar -->
+    <section aria-label="Small search component">
+    {% embed 'usagov:searchbar' with {
+      form_classes: "fed-directory-search-bar",
+      label_id: "fedGallerySearch",
+      for_string:"search-field-en-small",
+      hidden_input_id:"affiliate-agency-search",
+      input_id:"search-field-en-small",
+      input_classes:"usa-input fed-directory-search-input",
+      button_classes:"fed-directory-search-btn usagov-button",
+      placeholder_string,
+      value_string,
+      label_string,
+      alt_string,
+    } %}
+      {% set form_id = translations.form_id %}
+      {% set placeholder_string = translations.agencySearchLabel %}
+      {% set value_string = translations.agencySearchAffiliateID %}
+      {% set label_string = translations.agencySearchLabel %}
+      {% set alt_string = translations.search %}
+    {% endembed %}
+    <div id="fed-dir-search-results">
+    </div>
+    </section>
+  </div>
+</div>

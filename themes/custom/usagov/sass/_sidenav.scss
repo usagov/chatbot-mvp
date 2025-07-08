@@ -1,0 +1,92 @@
+  @use "usagov-variables" as *;
+@use "uswds-core" as *;
+
+.usa-sidenav {
+  @include u-text('blue-warm-70v');
+
+  .active-trail {
+    font-weight: bold;
+  }
+
+  ul > li > ul > li + li {
+    border-top: none;
+  }
+
+  ul > li > ul > li ~ ul ~ li {
+    border-top: none;
+  }
+
+  a:not(.usa-button), .usa-current{
+    display: block;
+    padding: .5rem 1rem;
+    text-decoration: none;
+  }
+
+  .usa-current {
+    color: $navigation-red;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 0;
+      width: 4px;
+      @include u-bg('red-50');
+
+      border-radius: 2px;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  a:not(.usa-button):not(.usa-current) {
+    @include u-text('blue-warm-70v');
+
+    &:hover {
+      @include u-text('blue-warm-70v');
+      @include u-bg('gray-5');
+
+      text-decoration: underline;
+    }
+  }
+
+  &__sublist { 
+    a:not(.usa-button), .usa-current {
+      padding-left: 2.3rem;
+    }
+
+    .usa-sidenav__sublist {
+      a:not(.usa-button), .usa-current {
+        padding-left: 3.6rem;
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+}
+
+/*
+This style overrides a style from _buttons.scss (https://github1s.com/uswds/uswds/blob/HEAD/src/stylesheets/elements/_buttons.scss#L28)
+Buttons with visited links would mysteriously get white text which is not accessible contrast on our theme's primary and secondary colors.
+*/
+.usa-button {
+  :visited {
+    color: initial;
+  }
+}
+
+/*
+This style overrides a style from drupal core (/web/core/modules/system/css/components/hidden.module.css)
+The USWDS mobile footer applies a "hidden" class to closed accordions to hide the accordion content, but the drupal style hides the entire accordion.
+*/
+.usa-footer__primary-content--collapsible {
+  &.hidden {
+    display: block;
+  }
+}

@@ -1,0 +1,331 @@
+@use "usagov-variables" as *;
+@use "uswds-core" as *;
+
+.usagov-ai-chatbot-container {
+    position: fixed;
+    z-index: 50;
+    right: 0;
+    bottom: 0;
+    overflow: scroll;
+    width: 380px;
+    margin-bottom: 0 !important;
+    margin-right: 10px;
+    box-shadow: 1px 1px 7px #aaa;
+    
+    @include u-bg('white');
+  }
+  
+  .usagov-ai-chatbot-header {
+    display: flex;
+    justify-content: space-between;
+  
+    @include u-bg('blue-80v');
+    @include u-padding-x(16px);
+    @include u-padding-y(8px);
+  }
+  
+  .usagov-ai-chatbot-title {
+    display: flex;
+    align-items: center;
+  
+    @include u-font-size('sans', 'md');
+    @include u-text('white');
+    @include u-text('bold');
+  }
+  
+  .usagov-ai-chatbot-experimental {
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    border-radius: 4px;
+  
+    @include u-text('gray-90');
+    @include u-text('bold');
+    @include u-font-size('sans', 'md');
+    @include u-bg('white');
+    @include u-padding-x(6px);
+    @include u-padding-y(2px);
+    @include u-margin-left(10px);
+  }
+  
+  .usagov-ai-chatbot-disclaimer {
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .usagov-ai-chatbot-disclaimer-title {
+    @include u-font-size('sans', 'md');
+    @include u-text('bold');
+  }
+  
+  .usagov-ai-chatbot-messages {
+    height: 357px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scroll-padding-top: 10px;
+
+    @include u-padding-x(16px);
+    @include u-padding-y(8px);
+  }
+  
+  .usagov-ai-chatbot-message {
+    display: flex;
+    flex-direction: column;
+    
+    @include u-margin-bottom(18px);
+  }
+  
+  #user-message {
+    padding: 8px;
+  }
+  
+  #usagov-ai-chatbot-toogle {
+    border: none;
+    background: none;
+    background-image: url("../assets/img/usa-icons/add.svg");
+    background-position-y: center;
+    background-size: 1.5rem;
+    filter: brightness(0) invert(1);
+    width: 24px;
+    height: 24px;
+    align-self: center;
+  }
+
+  .usagov-ai-chatbot-inner-container {
+    display: flex;
+  }
+
+  .usagov-ai-chatbot-message-time {
+    @include u-font-size('sans', 'xs');
+  }
+  
+  .usagov-ai-chatbot-message.user {
+    align-items: end;
+
+    .usagov-ai-chatbot-message-time {
+      margin-right: 40px;
+    }
+  }
+  
+  .usagov-ai-chatbot-message.bot {
+    align-items: start;
+
+    .usagov-ai-chatbot-message-time {
+      margin-left: 40px;
+    }
+  }
+  
+  .usagov-ai-chatbot-message img, .header-image {
+    border-radius: 50%;
+    align-self: end;
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-image {
+    @include u-border(1px, 'solid', 'white');
+
+    margin-right: 10px;
+  }
+
+  .usagov-ai-chatbot-message img.bot {
+    margin-right: 8px;
+  }
+
+  .usagov-ai-chatbot-message img.user {
+    margin-left: 8px;
+  }
+  
+  .usagov-ai-chatbot-message .text {
+    @include u-bg('cyan-10');
+    @include u-padding-x(8px);
+    @include u-padding-y(4px);
+
+    max-width: 90%;
+    border-radius: 4px;
+  }
+  
+  .usagov-ai-chatbot-message .text p {
+    margin: 0;
+  }
+  
+  .usagov-ai-chatbot-message.user .text{
+    @include u-bg('blue-80v');
+    @include u-text('white');
+  }
+  
+  .usagov-ai-chatbot-suggestion-button {
+    border-radius: 4px;
+  
+    @include u-text('gray-90');
+    @include u-text('normal');
+    @include u-bg('white');
+    @include u-border(1px, 'solid', 'gray-90');
+    @include u-padding-x(8px);
+    @include u-padding-y(4px);
+    @include u-margin-bottom(8px);
+    @include u-margin-right(2px);
+  }
+  
+  .usagov-ai-chatbot-suggestion-button:hover {
+    @include u-bg('gray-5');
+  }
+  
+  .usagov-ai-chatbot-input-container {
+    display: flex;
+    height: 74px;
+    padding: 16px;
+  }
+  
+  .usagov-ai-chatbot-input {
+    border-radius: .25rem;
+    margin-top: 0;
+    align-self: center;
+    flex: 1;
+    max-width: 100%;
+    @include u-border(1px, 'solid', 'gray-90');
+  }
+
+  .usagov-ai-chatbot-input::placeholder {
+    @include u-color('gray-90');
+  }
+  
+  .usagov-ai-chatbot-input-button {
+    height: 2.5rem;
+    align-self: center;
+    margin: 0;
+    margin-left: 4px;
+    width: auto;
+  
+    @include u-padding-x(16px);
+    @include u-padding-y(8px);
+    @include u-border(1px, 'solid', 'gray-90');
+  }
+  
+  .usagov-ai-chatbot-body {
+    display: flex;
+    flex-direction: column;
+  
+    @include u-border-top(1px, 'solid', 'gray-90');
+  }
+  
+  /* When Chat is Open */
+  .usagov-ai-chatbot-container.chat-open {
+    transform: translateY(0);
+  }
+  
+  /* When Chat is Collapsed */
+  .usagov-ai-chatbot-container.chat-collapsed {
+    margin-bottom: 50px;
+    transform: translateY(433px);
+  }
+  
+  /* HTML: <div class="loader"></div> */
+
+  // Make the circles a bit smaller.
+.loader {
+  width: 10px;
+  margin-inline: 15px;
+  margin-block: 4px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+    0%  {
+      box-shadow: 15px 0 #000, -15px 0 #0002;
+      background: #000; 
+    }
+    
+    33% {
+      box-shadow: 15px 0 #000, -15px 0 #0002;
+      background: #0002;
+    }
+
+    66% {
+      box-shadow: 15px 0 #0002,-15px 0 #000;
+      background: #0002;
+    }
+
+    100% {
+      box-shadow: 15px 0 #0002,-15px 0 #000;
+      background: #000;
+    }
+}
+
+#usagov-ai-chatbot-view-last-message {
+  position: absolute;
+  bottom: 74px;
+  right: 93.565px;
+  border-radius: 25px;
+  display: none;
+  align-items: center;
+  
+  @include u-bg('blue-80v');
+  @include u-padding(8px);
+  @include u-color('white');
+
+  img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  // Move elements inside container to the right side 
+  .usagov-ai-chatbot-container.chat-collapsed {
+    width: fit-content;
+    background: none;
+    box-shadow: none;
+  }
+
+  // Closed circle Icon
+  .usagov-ai-chatbot-container.chat-collapsed .usagov-ai-chatbot-header {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    justify-content: center;
+    justify-self: right;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 20px;
+
+    @include u-border(1px, 'solid', 'white');
+
+    .usagov-ai-chatbot-title, .usagov-ai-chatbot-experimental {
+      display: none;
+    }
+
+  }
+
+  .usagov-ai-chatbot-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .usagov-ai-chatbot-container.chat-open {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    border-radius: 0;
+    right: 0;
+    bottom: 0;
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .usagov-ai-chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+}

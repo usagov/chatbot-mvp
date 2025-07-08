@@ -1,0 +1,28 @@
+{#
+/**
+* @file
+* Default theme implementation to display a menu.
+*
+* Available variables:
+* - classes: A list of classes to apply to the top level <ul> element.
+* - dropdown_classes: A list of classes to apply to the dropdown <ul> element.
+* - menu_name: The machine name of the menu.
+* - items: A nested list of menu items. Each menu item contains:
+*   - attributes: HTML attributes for the menu item.
+*   - below: The menu item child items.
+*   - title: The menu link title.
+*   - url: The menu link url, instance of \Drupal\Core\Url
+*   - localized_options: Menu link localized options.
+*
+* @ingroup templates
+*
+* Define a custom macro that will render all menu trees.
+*/
+#}
+
+{% include directory ~ '/templates/includes/primary-footer-layout.html.twig' with {
+	'email_form_heading': 'Subscríbase para recibir información actualizada',
+	'email_form_label': 'Escriba su email',
+	'email_form_button': 'Subscríbase ahora',
+	'email_form_action': 'https://conectate.gobiernousa.gov/suscripciones'
+} %}

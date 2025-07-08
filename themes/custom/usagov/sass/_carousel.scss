@@ -1,0 +1,376 @@
+@use "usagov-variables" as *;
+@use "uswds-core" as *;
+
+.life-events {
+  @include u-bg('blue-80v');
+
+  grid-column: 1 / 3;
+  grid-row: 5 / 6;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  padding: 0;
+  max-width: 1124px;
+
+  h2 {
+    @include u-font-family('serif');
+
+    font-size: 2.2em;
+    margin: 0;
+    padding-top: 30px;
+  }
+
+  p {
+    @include u-font-family('sans');
+
+    font-size: 1.038em;
+    padding-top: 13px;
+  }
+}
+
+.life-events-carousel {
+  margin: 40px 0 0;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  flex: 1 0 auto;
+
+  .grid-container {
+    width: 100%;
+    max-width: 1124px;
+  }
+
+  .usagov-cards {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .usa-card__container {
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .usagov-card {
+    border: none;
+  }
+}
+
+.slick-slider {
+  overflow: hidden;
+}
+
+.slick-slide {
+  padding-inline: 8px;
+  width: 225px;
+}
+
+
+#slides-list {
+  // Make the white outline visible and maintain centering
+  .slick-arrow:focus {
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slick-arrow img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .slick-prev {
+    grid-area: prevIcon;
+    align-self: center;
+    justify-self: start;
+    left: 0;
+    margin-left: 4px;
+  }
+
+  .slick-list {
+    grid-area: slides;
+    justify-self: center;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+
+    .slick-track {
+      display: flex !important;
+
+      .slick-slide {
+        height: inherit !important;
+        display: flex !important;
+        justify-content: center;
+      }
+
+      .slick-slide.slick-current {
+        div .slide {
+          border: 4px solid white;
+
+          .life_events_card_text {
+            padding: 9px 9px 0;
+          }
+
+          &:focus-within {
+            border: 4px solid color('orange-50v');
+          }
+        }
+      }
+    }
+  }
+
+  .slick-next {
+    grid-area: nextIcon;
+    align-self: center;
+    justify-self: end;
+    right: 0;
+    margin-right: 4px;
+  }
+
+  .slick-dots {
+    grid-area: navDots;
+    display: flex;
+    position: static;
+    bottom: 0;
+    padding: 0;
+    margin: 5px 0 10px;
+    height: 44px;
+    justify-content: space-between;
+
+    li {
+      margin-left: 0;
+      margin-right: 0;
+      width: 44px;
+
+      button {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding-inline: 0;
+
+        .slick-dot-icon {
+          width: 100%;
+          height: 100%;
+          opacity: 1;
+          content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Ccircle cx='22' cy='22' r='11' stroke='%2300bde3' stroke-width='3' fill='transparent' /%3E%3C/svg%3E");
+
+          &::before {
+            position: relative;
+            content: "";
+          }
+        }
+
+        &:hover {
+          .slick-dot-icon {
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Ccircle cx='22' cy='22' r='11' stroke='white' stroke-width='3' fill='transparent' /%3E%3C/svg%3E");
+          }
+        }
+
+        &:focus {
+          outline: none;
+
+          .slick-dot-icon {
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Ccircle cx='22' cy='22' r='11' stroke='white' stroke-width='3' fill='transparent' /%3E%3Ccircle cx='22' cy='22' r='14' stroke='%230186a2' stroke-width='3' fill='transparent' /%3E%3C/svg%3E");
+          }
+        }
+      }
+
+      &.slick-active {
+        button {
+          width: 100%;
+          height: 100%;
+
+          .slick-dot-icon {
+            width: 100%;
+            height: 100%;
+            content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Ccircle cx='22' cy='22' r='11' stroke='%2300bde3' stroke-width='3' fill='%2300bde3' /%3E%3C/svg%3E");
+
+            &::before {
+              position: relative;
+              content: "";
+            }
+          }
+
+          &:focus {
+            .slick-dot-icon {
+              content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='48' width='48'%3E%3Ccircle cx='22' cy='22' r='11' stroke='%2300bde3' stroke-width='3' fill='%2300bde3' /%3E%3Ccircle cx='22' cy='22' r='14' stroke='white' stroke-width='3' fill='transparent' /%3E%3C/svg%3E");
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-areas: "prevIcon slides nextIcon"
+  ". navDots .";
+  width: 100%;
+
+  .slick-prev,
+  .slick-next {
+    width: 40px;
+    height: 40px;
+    border: none;
+    position: relative;
+    top: 0;
+    display: inline-block;
+  }
+
+  .slides {
+    max-width: 100%;
+  }
+
+  .slide {
+    height: 98%;
+    margin-top: 4px;
+    border: 1px solid $carousel-cyan-slide-border;
+    border-radius: 4px;
+    box-shadow: 4px 4px 4px 0 rgba(0 0 0 / 35%);
+    padding: 0;
+    text-align: left;
+
+    // max-width: 260px;
+    max-width: 390px;
+
+    a {
+      @include u-text('white');
+
+      text-decoration: none;
+      display: flex;
+
+      &:visited {
+        @include u-text('white');
+
+        text-decoration: none;
+      }
+
+      // &:focus {
+      //   outline: none;
+      // }
+
+      &:hover {
+        background-color: transparent;
+
+        h3 {
+          text-decoration: underline;
+          text-decoration-color: initial;
+          text-decoration-thickness: initial;
+        }
+
+        .thumbnailBanner {
+          @include u-bg('cyan-10');
+
+          opacity: 0.5;
+        }
+      }
+
+      .life_events_card_text {
+        padding: 12px 12px 0;
+        flex: 1 0 auto;
+      }
+    }
+
+    &:focus-within {
+      border: 4px solid color('orange-50v');
+
+      .life_events_card_text {
+        padding: 9px 9px 0;
+      }
+    }
+
+    h3 {
+      margin: 0;
+      @include u-text('cyan-30v');
+
+      text-decoration: none;
+      @include u-font-family('sans');
+    }
+
+    p {
+      margin: 0;
+
+      // uswds font-weight mixin
+      @include u-text('normal');
+      @include u-font-family('sans');
+
+      font-size: 1.038em;
+      padding-top: 10px;
+    }
+
+    .usa-card__container {
+      margin: 0;
+    }
+
+    .usa-card__body:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.thumbnailDiv {
+  background: transparent;
+  width: 100%;
+  height: 75px;
+  margin: 0;
+  box-shadow: 0 6px 6px $blue-shadow;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  flex: 0 0 75px;
+}
+
+.thumbnailBanner {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0 0 4px 4px;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  #slides-list {
+    .slick-dots {
+      justify-content: center;
+    }
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .life-events-carousel {
+    width: 100%;
+  }
+
+  .carousel-mover {
+    margin: auto;
+
+    .usagov-cards,
+    .usa-card-group,
+    #slides-list {
+      max-width: 1124px;
+      padding: 0;
+      margin: 0;
+
+      .slick-list {
+        max-width: 1044px;
+      }
+
+      .slick-dots {
+        margin-bottom: 70px;
+      }
+    }
+  }
+}

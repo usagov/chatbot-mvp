@@ -1,0 +1,90 @@
+@use "usagov-variables" as *;
+@use "uswds-core" as *;
+
+// $hero: var( $usagov-variables, hero );
+
+.usagov-hero {
+  border-top: 10px solid color('red-50');
+  margin-bottom: 1.5rem;
+  margin-top: -0.75rem;
+  width: 100vw;
+  position: relative;
+  left: calc(-50vw + 50%);
+  background-position: top;
+}
+
+.usagov-hero__callout {
+  @include u-bg('blue-80v');
+
+  border: 1px solid color('white');
+
+  ul {
+    a,
+    a:hover,
+    a:visited {
+      @include u-text('cyan-10');
+    }
+  }
+
+  ul li {
+    margin: 15px 0;
+  }
+}
+
+// $card: var( $usagov-variables, card );
+.usagov-cards {
+  padding: 1em 0;
+  @include u-bg('gray-5');
+}
+
+.usagov-cards-bg {
+  box-shadow: 0 0 0 100vmax #f0f0f0;
+  clip-path: inset(0 -100vmax);
+}
+
+.usa-layout-docs__main .usagov-cards {
+  margin-top: 24px;
+}
+
+.usagov-card__heading {
+  @include u-text('blue-warm-70v');
+
+  text-decoration-line: underline;
+  text-decoration-thickness: 7px;
+  text-decoration-color: $cyan-text-decoration;
+  text-decoration-skip-ink: none;
+  line-height: 1.8em;
+}
+
+.usagov-navpage-item {
+  border: 2px solid transparent;
+
+  &:hover {
+    @include u-bg('cyan-10');
+  }
+
+  a {
+    @include u-text('black');
+
+    display: block;
+  }
+}
+
+[data-pagetype="Navigation Cards Page"]{
+  .grid-container{
+    max-width: 74.25rem;
+  }
+
+  .usa-card__container{
+    margin: 0;
+  }
+
+  .usa-card, .usa-card:last-child{
+    margin-bottom: 0.5rem;
+  }
+  @include at-media("tablet") {
+    .usa-hero__callout {
+      max-width: unset;
+    }
+  }
+}

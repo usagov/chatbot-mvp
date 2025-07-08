@@ -1,0 +1,88 @@
+{#
+/**
+ * @file
+ * Theme override to display a block.
+ *
+ * Available variables:
+ * - plugin_id: The ID of the block implementation.
+ * - label: The configured label of the block if visible.
+ * - configuration: A list of the block's configuration values.
+ *   - label: The configured label for the block.
+ *   - label_display: The display settings for the label.
+ *   - provider: The module or other provider that provided this block plugin.
+ *   - Block plugin specific settings will also be stored here.
+ * - content: The content of this block.
+ * - attributes: array of HTML attributes populated by modules, intended to
+ *   be added to the main container tag of this template.
+ *   - id: A valid HTML ID and guaranteed unique.
+ * - title_attributes: Same as attributes, except applied to the main title
+ *   tag that appears in the template.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - bundle: The bundle of a custom block.
+ * - view_mode: The view mode a custom block was rendered in.
+ *
+ * @see template_preprocess_block()
+ * @see block_content_preprocess_block()
+ */
+#}
+{%
+  set classes = [
+  'block',
+  'block-' ~ configuration.provider|clean_class,
+  'block-' ~ plugin_id|clean_class,
+  bundle ? 'block--type-' ~ bundle|clean_class,
+  view_mode ? 'block--view-mode-' ~ view_mode|clean_class,
+]
+%}
+<div class="usagov-ai-chatbot-container chat-collapsed" >
+  <div class="usagov-ai-chatbot-header">
+    <div class="usagov-ai-chatbot-title">
+      <img class="header-image bot" src="/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png" alt="USA.gov Chatbot Avatar" />
+      USA.gov Chatbot
+      <div class="usagov-ai-chatbot-experimental">Beta</div>
+    </div>
+    <button id="usagov-ai-chatbot-toogle" onclick="chatbotToogle()"></button>
+  </div>
+  <div class="usagov-ai-chatbot-body">
+    <div class="usagov-ai-chatbot-messages">
+      <div class="usagov-ai-chatbot-disclaimer">
+        <div class="usagov-ai-chatbot-disclaimer-title">
+          {{ 'now'|date('F d') }}
+        </div>
+        <div class="usagov-ai-chatbot-disclaimer-body">
+          AI chatbots can make mistakes. Please verify important information.
+        </div>
+      </div>
+      <div id="usagov-ai-chatbot-last-message" class="usagov-ai-chatbot-message bot">
+        <div class="usagov-ai-chatbot-inner-container">
+          <img class="message-image bot" src="/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png" alt="USA.gov Chatbot Avatar" />
+          <div class="text">Welcome to USAGov’s assistance chatbot. I’m available 24/7. </br>Would you like help with a common topic below?</div>
+        </div>
+        <div class="usagov-ai-chatbot-message-time">{{ 'now'|date('h:i A') }}</div>
+      </div>
+      <div class="usagov-ai-chatbot-suggestions">
+        <button id="unclaimedMoney" class="usagov-ai-chatbot-suggestion-button" onclick="sendSuggestion(this)">Unclaimed money</button>
+        <button id="gsaAuction" class="usagov-ai-chatbot-suggestion-button" onclick="sendSuggestion(this)">GSA Auction</button>
+        <button id="federallySeizedProperties" class="usagov-ai-chatbot-suggestion-button" onclick="sendSuggestion(this)">Federally seized properties</button>
+      </div>
+    </div>
+
+    <a href="#usagov-ai-chatbot-last-message">
+      <div id="usagov-ai-chatbot-view-last-message">
+        <img src="/themes/custom/usagov/images/Reimagined_Jump_to_Arrow.svg" alt="">
+        <span>View last message</span>
+      </div>
+    </a>
+
+    <div class="usagov-ai-chatbot-input-container">
+      <input type="text" id="user-message" class="usa-input usagov-ai-chatbot-input" placeholder="Type a message..." onkeypress="handleEnter(event)"/>
+      <button id="submitMessage" class="usa-button usagov-ai-chatbot-input-button" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/showdown/dist/showdown.min.js"></script>
+<script src="/themes/custom/usagov/scripts/AIchatbot.js" defer></script>

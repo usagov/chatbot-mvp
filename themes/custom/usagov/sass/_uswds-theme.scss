@@ -1,0 +1,72 @@
+/*
+USWDS Variables
+*/
+// $theme-prefix-separator: "--";
+@use "uswds-core" with (
+  $theme-image-path: "../assets/img",
+
+  $color-palettes: (
+    "palette-color",
+  ),
+  $global-color-palettes: (
+    "palette-color",
+  ),
+  $theme-utility-breakpoints: (
+    'card':              false,   // 160px
+    'card-lg':           false,   // 240px
+    'mobile':            false,   // 320px
+    'mobile-lg':         true,    // 480px
+    'tablet':            true,    // 640px
+    'tablet-lg':         true,   // 880px
+    'desktop':           true,    // 1024px
+    'desktop-lg':        false,   // 1200px
+    'widescreen':        false,   // 1400px
+  ),
+  // links
+  $theme-link-color: "blue-warm-70v",
+  $theme-link-hover-color: "blue-warm-70v",
+  $theme-link-active-color: "blue-warm-70v",
+  $theme-link-visited-color: "violet-60v",
+
+  // buttons
+  // Primary colors
+  $theme-color-primary: "cyan-30v",
+  $theme-color-primary-lighter: "cyan-10",
+  $theme-color-primary-dark: "cyan-40v",
+  $theme-color-primary-darker: "cyan-40v",
+
+  // Secondary colors (These seem to only be used by usa-button--secondary)
+  $theme-color-secondary: "cyan-10",
+  // background
+  $theme-color-secondary-dark: "cyan-20",
+  // hover
+  $theme-color-secondary-darker: "cyan-20",
+
+  // active
+  // focus color for input
+  $theme-focus-color: "orange-50v",
+  $theme-focus-offset: 0,
+  $theme-focus-style: solid,
+  $theme-focus-width: 0.5,
+
+  // Process List
+  $theme-process-list-counter-background-color: "ink",
+  $theme-process-list-counter-text-color: "white",
+
+  // Alert
+  $theme-color-error: "red-50",
+  $theme-accordion-border-color: "gray-cool-10",
+
+  // Font-Sizes
+  $theme-body-font-size: "md",
+  $theme-h1-font-size: "xl",
+  $theme-h2-font-size: "lg",
+  $theme-h3-font-size: "md",
+  // Font-Weights
+  $theme-font-weight-medium: 500,
+  $theme-font-weight-semibold: 600,
+
+  // These currently do not "work". To activate these we need to rename mobile-menu.scss to _mobile-menu.scss. At this time I do not think it's needed but want to document these options
+  $theme-show-compile-warnings: false,
+  $theme-show-notifications: false
+);

@@ -1,0 +1,349 @@
+@use "usagov-variables" as *;
+@use "uswds-core" as *;
+@use "usagov-design-system" as *;
+@forward "usa-pagination";
+
+main[data-pagetype="Benefits Category Search"]{
+  .usa-prose > p {
+    max-width: 100%;
+  }
+}
+
+.benefits-category-list {
+  margin-left: calc(-0.5 * (100vw - 100%));
+  margin-right: calc(-0.5 * (100vw - 100%));
+  padding: 1.75rem calc(0.5 * (100vw - 100%)) 75px;
+  background-color: color("cyan-5");
+
+  @include at-media('tablet') {
+    padding-top: 2.75rem;
+  }
+
+  fieldset {
+    padding: 0;
+    border-width: 0;
+    margin: 0;
+  }
+
+  ul > li {
+    break-inside: avoid;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 0.625rem;
+    flex-direction: column;
+
+    @include at-media('tablet-lg') {
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+  }
+
+  .usa-button {
+    background-color: usagov('benefit-search-button');
+    border: 2px solid color('gray-90');
+    margin-right: 0;
+    margin-bottom: 10px;
+
+    @include u-width('full');
+
+    @include at-media('tablet-lg') {
+      width: fit-content;
+      @include u-margin-bottom(0);
+    }
+
+    &:hover, &:active {
+      background-color: color('cyan-40v');
+    }
+
+    &.usa-button--secondary {
+      background-color: #fff;
+    }
+
+    &.usa-button--secondary:hover {
+      background-color: color('gray-5');
+      border: 2px solid color('gray-90');
+    }
+  }
+
+  .usa-checkbox {
+    background-color: inherit;
+  }
+
+  .usa-checkbox__label {
+    margin-bottom: 0.75rem;
+    align-items: center;
+    @include u-margin-top(0);
+    @include u-display('flex'); // align checkbox with middle of baseline
+
+    &::before {
+      box-shadow: 0 0 0 1px color('gray-90');
+    }
+  }
+
+  .usa-checkbox__input:checked + .usa-checkbox__label::before {
+    background-color: color('blue-warm-70v');
+    box-shadow: 0 0 0 1px color('gray-90');
+  }
+
+  .grid-row {
+    border: 0;
+    padding: 20px 0 0;
+
+    @include at-media('tablet-lg') {
+      gap: 10px;
+    }
+  }
+
+  .grid-row.benefits-category-error .benefits-category-list-checkbox-all,
+  .grid-row.benefits-category-error ul > li {
+    border-left: 3px solid color('error');
+    padding-left: 0.75rem;
+  }
+
+  .grid-row.benefits-category-error .benefits-category-list-checkbox-all {
+    margin-top: -1px;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+
+    @include at-media('tablet-lg') {
+      padding-top: 0;
+      margin-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  .grid-row.benefits-category-error .benefits-category-list-checkbox-cols {
+    @include at-media('tablet-lg') {
+      column-gap: 0.75rem;
+    }
+  }
+
+  .grid-row.benefits-category-error .benefits-category-list-checkbox-all label {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.benefits-category-list-checkbox-cols {
+  column-count: 2;
+  column-gap: 1rem;
+  @include u-width('full');
+
+  @include at-media('tablet-lg') {
+    column-count: 3;
+  }
+
+  > ul > li {
+    padding-bottom: 0.5rem;
+
+    &.end-column {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.benefits-category-list-checkbox-all {
+  height: fit-content;
+  margin-bottom: 0.5rem;
+  @include u-width('full');
+
+  @include at-media('tablet-lg') {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 10rem;
+  }
+}
+
+.benefits-search-results {
+  .page {
+    h2 {
+    margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.benefits-result {
+  border-bottom: 2px solid color('gray-20');
+
+  .benefits-result-text {
+    @include u-padding-right('205');
+
+    h3 {
+      @include u-margin-bottom(0.625rem);
+    }
+
+    p:first-of-type {
+      @include u-margin-top(0);
+    }
+  }
+
+  .benefits-result-categories {
+    @include u-padding-top(0);
+    @include u-padding-bottom(1.25rem);
+
+    @include at-media('desktop') {
+      @include u-padding-top('205');
+    }
+
+    h4 {
+      @include u-margin-top(0);
+      @include u-margin-bottom(0.625rem);
+
+      font-size: 1.1rem;
+    }
+
+    ul {
+      list-style-type: none;
+      @include u-margin(0);
+      @include u-padding-left(0);
+    }
+
+    li {
+      padding: 0.25rem 0.5rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      background-color: color('cyan-5');
+      @include u-display('inline-block');
+    }
+  }
+}
+
+.benefits-result-text {
+  @include u-padding-right('205');
+}
+
+.benefit-finder__title {
+  @include u-font-family('serif');
+
+  margin: 2.5rem 0 0;
+}
+
+.benefit-finder__main {
+  p.benefit-finder__desc {
+    margin-top: 0.5rem;
+    @include u-margin-bottom(5);
+  }
+
+  h2#categories-label {
+    margin-top: 0;
+    @include u-font-family('serif');
+  }
+
+  .life-events-grid {
+    @include u-display('block');
+
+    @media (min-width: 700px) {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 16px;
+
+      @include u-margin-bottom(5);
+    }
+
+    .life-events-item {
+      display: grid;
+      grid-template-columns: 1fr 8fr 1fr;
+      position: relative;
+      @include u-margin-bottom('205');
+
+      @media (min-width: 700px) {
+        box-shadow: 0 4px 4px 0 rgb(0 0 0 / 11%);
+        border: 2px solid #e0f7fa;
+        margin-bottom: 5px;
+
+        @include u-padding('205');
+      }
+
+      &::after {
+        content: "";
+        background-image: url("/themes/custom/usagov/images/right-arrow.svg");
+        background-repeat: no-repeat;
+        width: 40px;
+        height: 40px;
+        margin: auto;
+      }
+
+      &::before {
+        content: "";
+        background-repeat: no-repeat;
+        background-size: contain;
+        width: 45px;
+        height: 45px;
+        margin: auto;
+      }
+
+      &:hover {
+        background-color: color('cyan-10');
+      }
+
+      &:focus-within {
+        background-color: color('cyan-10');
+        outline: 0.25rem solid $blue-outer-focus;
+        outline-offset: 0;
+        box-shadow: inset 0 0 0 2px color('white');
+      }
+
+      a:focus, a:hover {
+        box-shadow: none;
+        outline-width: 0;
+      }
+
+      &.benefit-finder-icon--death,
+      &.benefit-finder-icon--es-death {
+        &::before {
+          background-image: url("/themes/custom/usagov/images/Death-of-a-loved-one-icon.svg");
+        }
+      }
+
+      &.benefit-finder-icon--financial,
+      &.benefit-finder-icon--es-financial {
+        &::before {
+          background-image: url("/themes/custom/usagov/images/Financial-shock-icon.svg");
+        }
+      }
+
+      &.benefit-finder-icon--disability,
+      &.benefit-finder-icon--es-disability {
+        &::before {
+          background-image: url("/themes/custom/usagov/images/Disability-icon.svg");
+        }
+      }
+
+      &.benefit-finder-icon--retirement,
+      &.benefit-finder-icon--es-retirement  {
+        &::before {
+          background-image: url("/themes/custom/usagov/images/Retirement-icon.svg");
+        }
+      }
+
+      &.benefit-finder-icon--all-benefits,
+      &.benefit-finder-icon--es-all-benefits {
+        &::before {
+          background-image: url("/themes/custom/usagov/images/topics/ICONS_Life_events.svg");
+        }
+      }
+    }
+
+    .life-events-item-content {
+      @include u-padding-left('205');
+
+      > h3 {
+        @include u-margin(0);
+        @include u-font-size('sans', 'md');
+      }
+
+      > p {
+        @include u-margin(0);
+        @include u-font-size('sans', 'sm');
+      }
+
+      a::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+    }
+  }
+}
