@@ -170,7 +170,7 @@ function lookup(address, callback) {
  */
  function setApiKey() {
     "use strict";
-    gapi.client.setApiKey("AIzaSyDgYFMaq0e-u3EZPPhTrBN0jL1uoc8Lm0A");
+    gapi.client.setApiKey("");
 }
 
 // Load the GAPI Client Library
