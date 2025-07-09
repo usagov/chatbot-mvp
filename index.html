@@ -1061,12 +1061,12 @@
   
 
 <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"node\/1","currentPathIsAdmin":false,"isFront":true,"currentLanguage":"en"},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"top_nav_menu":[{"\/#all-topics-header":"usa-nav__topics"},{"\/about-the-us":"usa-nav__about"},{"\/money":"usa-nav__money"},{"\/laws-and-legal-issues":"usa-nav__law"},{"\/scams-and-fraud":"usa-nav__scams"},{"\/benefits":"usa-nav_benefits"},{"\/housing-help":"usa-nav_housing"},{"\/immigration-and-citizenship":null},{"\/taxes":"usa-nav_taxes"},{"\/travel":"usa-nav_travel"},{"\/voting-and-elections":null}],"user":{"uid":0,"permissionsHash":"43cf91dfb00ea3da1a7186a5c0b4ebfb8d967a3f882b2c9516c59e573558853b"}}</script>
-<script src="/core/assets/vendor/jquery/jquery.min.js?v=3.7.1"></script>
-<script src="/core/assets/vendor/once/once.min.js?v=1.0.1"></script>
-<script src="/core/misc/drupalSettingsLoader.js?v=10.4.5"></script>
-<script src="/core/misc/drupal.js?v=10.4.5"></script>
-<script src="/core/misc/drupal.init.js?v=10.4.5"></script>
-<script src="/core/../themes/custom/usagov/components/searchbar/searchbar.js?sz3jh0"></script>
+<script src="/site/usagov/chatbot-mvp/core/assets/vendor/jquery/jquery.min.js?v=3.7.1"></script>
+<script src="/site/usagov/chatbot-mvp/core/assets/vendor/once/once.min.js?v=1.0.1"></script>
+<script src="/site/usagov/chatbot-mvp/core/misc/drupalSettingsLoader.js?v=10.4.5"></script>
+<script src="/site/usagov/chatbot-mvp/core/misc/drupal.js?v=10.4.5"></script>
+<script src="/site/usagov/chatbot-mvp/core/misc/drupal.init.js?v=10.4.5"></script>
+<script src="/site/usagov/chatbot-mvp/core/../themes/custom/usagov/components/searchbar/searchbar.js?sz3jh0"></script>
 <script src="/site/usagov/chatbot-mvp/themes/custom/usagov/scripts/uswds.min.js?v=1"></script>
 <script src="/site/usagov/chatbot-mvp/themes/custom/usagov/scripts/uswds-init.min.js?v=1"></script>
 <script src="/site/usagov/chatbot-mvp/themes/custom/usagov/scripts/newFooter.js?v=1"></script>
@@ -1132,60 +1132,6 @@ const scrollToTop = () => {
 // }
 
 </script>
-
-<!-- siteimprove usability -->
-<script>
-	/*<![CDATA[*/
-	(function() {
-	var sz = document.createElement('script'); sz.type = 'text/javascript'; sz.async = true;
-	sz.src = '//siteimproveanalytics.com/js/siteanalyze_51567.js';
-	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sz, s);
-	})();
-	/*]]>*/
-</script>
-<!-- end siteimprove usability -->
-
-<!-- begin code to remove tabindex from survey -->
-<script>
-  document.querySelectorAll(".usa-accordion__content").forEach((accordionContent) => {
-    accordionContent.onbeforematch = () => {
-      //accordionContent.removeAttribute("hidden");
-      document.querySelector("[aria-controls='"+accordionContent.id+"']").setAttribute("aria-expanded", "true");
-    };
-
-  });
-	// Select the node that will be observed for mutations
-	//<![CDATA[
-	var targetNode = document.getElementById('main-content');
-	// Options for the observer (which mutations to observe)
-	var config = { attributes: true, childList: true, subtree: true };
-
-	// Callback function to execute when mutations are observed
-	var callback = function(mutationsList, observer) {
-		// Use traditional 'for loops' for IE 11
-		for(let mutation of mutationsList) {
-			if (mutation.type === 'childList') {
-				// console.log('A child node has been added or removed.');
-				document.querySelector(".QSIUserDefinedHTML")?.children[0].removeAttribute("tabindex");
-				// Later, you can stop observing
-				//observer.disconnect();
-			}else if (mutation.type === 'attributes') {
-				//console.log('The ' + mutation.attributeName + ' attribute was modified.');
-				document.querySelectorAll(".usa-accordion__content[hidden='']").forEach((hiddenAccordion) => {
-          hiddenAccordion.setAttribute("hidden", "until-found");
-        });
-			}
-		}
-	};
-
-	// Create an observer instance linked to the callback function
-	var observer = new MutationObserver(callback);
-
-	// Start observing the target node for configured mutations
-	observer.observe(targetNode, config);
-	//]]>
-	</script>
-<!-- end code to remove tabindex from survey  -->
 
 <!-- Needed_for_USA.gov_uptime_check -->
 <script src="/site/usagov/chatbot-mvp/themes/custom/usagov/scripts/modifyMobileNav.js"></script>
