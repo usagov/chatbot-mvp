@@ -1,0 +1,4 @@
+uswds-grid-layout:
+  css:
+    component:
+      css/uswds-paragraph-components-grid-layout.css: { preprocess: false, minified: true }

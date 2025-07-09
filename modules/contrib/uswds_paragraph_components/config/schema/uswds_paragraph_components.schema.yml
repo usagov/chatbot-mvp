@@ -1,0 +1,30 @@
+# Copied from paragraph schema with 1 addition.
+field.widget.settings.uswds_paragraph_components_paragraphs:
+  type: mapping
+  mapping:
+    title:
+      type: label
+    title_plural:
+      type: label
+    edit_mode:
+      type: string
+    closed_mode:
+      type: string
+    autocollapse:
+      type: string
+    closed_mode_threshold:
+      type: integer
+    add_mode:
+      type: string
+    form_display_mode:
+      type: string
+    default_paragraph_type:
+      type: string
+    features:
+      type: sequence
+      orderby: key
+      sequence:
+        type: string
+    disable_breakpoints:
+      type: boolean
+      label: 'Custom feature to paragraph formatter'

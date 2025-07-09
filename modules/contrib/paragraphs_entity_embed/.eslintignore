@@ -1,0 +1,4 @@
+js/build/*
+js/plugins/*
+webpack.config.js
+*.yml

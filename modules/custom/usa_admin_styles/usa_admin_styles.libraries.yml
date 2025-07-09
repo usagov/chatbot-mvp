@@ -1,0 +1,14 @@
+mylib:
+  css:
+    theme:
+      css/usa_admin_styles.css: {}
+
+accordionButtonSubmitFix: 
+  js:
+    noSubmitOnAccordion.js: {}
+
+benefitsCategoryLanguageFilter: 
+  js:
+    benefitsCategoryLanguageFilter.js: {}
+  dependencies:
+    - core/jquery

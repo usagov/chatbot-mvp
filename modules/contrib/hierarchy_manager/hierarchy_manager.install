@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Hierarchy Manager module.
+ */
+
+use Drupal\system\Entity\Menu;
+
+/**
+ * Enable hierarchy manager for all bundles of active setup plugins.
+ */
+function hierarchy_manager_update_8001() {
+  if ($config = \Drupal::configFactory()->getEditable('hierarchy_manager.hmconfig')) {
+    if ($allowed_setup_plugins = $config->get('allowed_setup_plugins')) {
+      if (!empty($allowed_setup_plugins['hm_setup_menu'])) {
+        $menus = Menu::loadMultiple();
+        $bundles = [];
+        /** @var \Drupal\system\Entity\Menu $menu */
+        foreach ($menus as $menu) {
+          $id = $menu->id();
+          $bundles[$id] = $id;
+        }
+        $config->set('setup_plugin_settings.hm_setup_menu.bundle', $bundles);
+        $config->save();
+      }
+      if (!empty($allowed_setup_plugins['hm_setup_taxonomy'])) {
+        $vocabularies = \Drupal::service('entity_type.bundle.info')->getBundleInfo('taxonomy_term');
+        $bundles = [];
+        foreach ($vocabularies as $key => $value) {
+          $bundles[$key] = $key;
+        }
+        $config->set('setup_plugin_settings.hm_setup_taxonomy.bundle', $bundles);
+        $config->save();
+      }
+      drupal_flush_all_caches();
+    }
+  }
+}

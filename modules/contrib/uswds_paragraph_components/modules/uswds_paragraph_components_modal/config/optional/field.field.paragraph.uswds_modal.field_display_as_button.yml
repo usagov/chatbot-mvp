@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_display_as_button
+    - paragraphs.paragraphs_type.uswds_modal
+id: paragraph.uswds_modal.field_display_as_button
+field_name: field_display_as_button
+entity_type: paragraph
+bundle: uswds_modal
+label: 'Display as Button'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

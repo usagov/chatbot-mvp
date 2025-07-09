@@ -1,0 +1,4 @@
+name: 'USAgov Top Navigation Menu'
+type: module
+description: 'Hooks to alter the top navigation menu, mainly for accessibility'
+core_version_requirement: ^9 || ^10

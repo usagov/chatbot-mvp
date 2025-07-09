@@ -1,0 +1,6 @@
+name: USAgov Directories Module
+description: Custom code for USAGov A-Z Directories (see also usagov_ssg_postprocessing).
+package: USAgov
+
+type: module
+core_version_requirement: ^9 || ^10

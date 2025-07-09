@@ -1,0 +1,13 @@
+name: USWDS Paragraph Components Modal
+type: module
+description: Modal using USWDS markup
+core_version_requirement: ^10 || ^11
+package: Paragraphs
+dependencies:
+  - paragraphs:paragraphs
+  - uswds_paragraph_components:uswds_paragraph_components
+
+# Information added by Drupal.org packaging script on 2025-03-15
+version: '3.1.1'
+project: 'uswds_paragraph_components'
+datestamp: 1742055559

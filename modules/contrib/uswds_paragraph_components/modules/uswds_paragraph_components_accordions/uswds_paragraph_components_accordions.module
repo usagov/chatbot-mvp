@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * USWDS Accordions module file.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function uswds_paragraph_components_accordions_theme($existing, $type, $theme, $path): array {
+  return [
+    'paragraph__uswds_accordion' => [
+      'base hook' => 'paragraph',
+      'path' => $path . '/templates',
+    ],
+  ];
+}

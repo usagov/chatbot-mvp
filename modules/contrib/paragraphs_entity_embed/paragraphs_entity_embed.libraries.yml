@@ -1,0 +1,24 @@
+dialog:
+  version: VERSION
+  js:
+    js/paragraphs_entity_embed.dialog.js: {}
+  css:
+    theme:
+      css/paragraphs_entity_embed.dialog.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.ajax
+
+# CKEditor 5
+dialog_editor5:
+  js:
+    js/build/embeddedParagraph.js: { preprocess: false, minified: true }
+  css:
+    theme:
+      css/paragraphs_entity_embed.dialog.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/drupal.ajax
+    - core/ckeditor5

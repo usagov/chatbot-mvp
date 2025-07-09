@@ -1,0 +1,4 @@
+uswds-cards:
+  css:
+    component:
+      css/uswds-paragraph-components-cards.css: { preprocess: false, minified: true }

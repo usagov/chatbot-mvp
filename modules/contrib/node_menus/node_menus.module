@@ -1,0 +1,353 @@
+<?php
+
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\node\NodeInterface;
+use Drupal\node\NodeTypeInterface;
+use Drupal\system\Entity\Menu;
+use Drupal\system\MenuInterface;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function node_menus_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (!isset($form['menu'])) {
+    return;
+  }
+
+  /** @var \Drupal\system\Entity\Menu[] $menus */
+  $menus = \Drupal::entityTypeManager()->getStorage('menu')->loadMultiple();
+  /** @var \Drupal\node\Entity\Node $node */
+  $node = $form_state->getFormObject()->getEntity();
+  /** @var \Drupal\node\Entity\NodeType $node_type */
+  $node_type = $node->type->entity;
+  /** @var \Drupal\Core\Menu\MenuParentFormSelectorInterface $menu_parent_selector */
+  $menu_parent_selector = \Drupal::service('menu.parent_form_selector');
+
+
+  if (!$node->isTranslatable() || !$node_type->getThirdPartySetting('node_menus', 'enabled', FALSE)) {
+    return;
+  }
+
+  $available_menus = $node_type->getThirdPartySetting('node_menus', 'languages', []);
+
+  if ($node->isDefaultTranslation() && node_menus_language_selector_enabled($node)) {
+    foreach ($available_menus as $code => $language_menus) {
+      /** @var \Drupal\system\MenuInterface[] $type_menus */
+      $type_menus = Menu::loadMultiple($language_menus['available_menus']);
+      $menus = [];
+      foreach ($type_menus as $menu) {
+        $menus[$menu->id()] = $menu->label();
+      }
+
+      $defaults = node_menus_get_menu_link_defaults($node);
+      if ($defaults['id']) {
+        $default = $defaults['menu_name'] . ':' . $defaults['parent'];
+      }
+      else {
+        $default = $language_menus['parent'];
+      }
+
+      $parent_element = $menu_parent_selector->parentSelectElement($default, $defaults['id'], $menus);
+
+      $form['menu']['link']['node_menus']['#weight'] = 1;
+      $form['menu']['link']['node_menus'][$code]['#type'] = 'container';
+      $form['menu']['link']['node_menus'][$code]['menu_parent'] = $parent_element;
+      $form['menu']['link']['node_menus'][$code]['menu_parent']['#title'] = t('Parent item');
+      $form['menu']['link']['node_menus'][$code]['menu_parent']['#attributes']['class'][] = 'menu-parent-select';
+      $form['menu']['link']['node_menus'][$code]['menu_parent']['#states'] = [
+        'visible' => [
+          'select[name="langcode[0][value]"]' => ['value' => $code],
+        ],
+      ];
+    }
+
+    $form['menu']['link']['weight']['#weight'] = 2;
+
+    // Show default menu selection when undefined language code.
+    $form['menu']['link']['menu_parent']['#states'] = [
+      'visible' => [
+        'select[name="langcode[0][value]"]' => ['value' => LanguageInterface::LANGCODE_NOT_SPECIFIED],
+      ],
+    ];
+
+    // We need to sync menu item. Things will break if we try to do similar logic
+    // found in menu ui submit callback, token module breaks hard.
+    $form['#validate'][] = 'node_menus_form_node_form_validate';
+  }
+  else {
+    /** @var \Drupal\system\MenuInterface[] $type_menus */
+    $type_menus = Menu::loadMultiple($available_menus[$node->language()->getId()]['available_menus']);
+    $menus = [];
+    foreach ($type_menus as $menu) {
+      $menus[$menu->id()] = $menu->label();
+    }
+
+    $defaults = node_menus_get_menu_link_defaults($node);
+    if ($defaults['id']) {
+      $default = $defaults['menu_name'] . ':' . $defaults['parent'];
+    }
+    else {
+      $default = $available_menus[$node->language()->getId()]['parent'];
+    }
+
+    $parent_element = $menu_parent_selector->parentSelectElement($default, $defaults['id'], $menus);
+    $form['menu']['link']['menu_parent'] = $parent_element;
+    $form['menu']['link']['id']['#value'] = $defaults['id'];
+    $form['menu']['link']['entity_id']['#value'] = $defaults['entity_id'];
+    $form['menu']['link']['title']['#default_value'] = $defaults['title'];
+    $form['menu']['link']['description']['#default_value'] = $defaults['description'];
+    $form['menu']['link']['weight']['#default_value'] = $defaults['weight'];
+  }
+
+}
+
+/**
+ * Check if node has language selector available.
+ *
+ * @param $node
+ *
+ * @return array|false|mixed
+ */
+function node_menus_language_selector_enabled($node) {
+  $bundle = $node->bundle();
+  $language_config = \Drupal::configFactory()->get('language.content_settings.node.' . $bundle);
+
+  return $language_config->get('language_alterable') ?? FALSE;
+}
+
+
+/**
+ * Node form validate callback.
+ * Sync main parent item with selected item from language menu.
+ *
+ * @param array $form
+ * @param FormStateInterface $form_state
+ */
+function node_menus_form_node_form_validate($form, FormStateInterface $form_state) {
+  $values = $form_state->getValue('menu');
+  $langcode = $form_state->getValue(['langcode', 0, 'value']);
+
+  // Undefined language code uses default one, so no sync is needed.
+  if ($langcode !== LanguageInterface::LANGCODE_NOT_SPECIFIED) {
+    $values['menu_parent'] = $values['node_menus'][$langcode]['menu_parent'];
+    $form_state->setValue('menu', $values);
+  }
+}
+
+/**
+ * Returns the definition for a menu link for the given node.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The node entity.
+ *
+ * @return array
+ *   An array that contains default values for the menu link form.
+ */
+function node_menus_get_menu_link_defaults(NodeInterface $node) {
+  // Prepare the definition for the edit form.
+  /** @var \Drupal\node\NodeTypeInterface $node_type */
+  $node_type = $node->type->entity;
+  $node_language = $node->language()->getId();
+  $all_menus = $node_type->getThirdPartySetting('node_menus', 'languages', []);
+  $current_language_menus = $all_menus[$node_language];
+  $menu_name = strtok($current_language_menus['parent'], ':');
+  $defaults = FALSE;
+  if ($node->id()) {
+    $id = FALSE;
+    // Give priority to the default menu
+    $query = \Drupal::entityQuery('menu_link_content')
+      ->condition('link.uri', 'node/' . $node->id())
+      ->condition('menu_name', $menu_name)
+      ->sort('id', 'ASC')
+      ->range(0, 1)
+      ->accessCheck();
+    $result = $query->execute();
+
+    $id = (!empty($result)) ? reset($result) : FALSE;
+
+    // Check all allowed menus if a link does not exist in the default menu.
+    if (!$id) {
+      $query = \Drupal::entityQuery('menu_link_content')
+        ->condition('link.uri', 'entity:node/' . $node->id())
+        ->condition('menu_name', array_values($current_language_menus['available_menus']), 'IN')
+        ->sort('id', 'ASC')
+        ->range(0, 1)
+        ->accessCheck();
+      $result = $query->execute();
+
+      $id = (!empty($result)) ? reset($result) : FALSE;
+    }
+    if ($id) {
+      $menu_link = MenuLinkContent::load($id);
+      $menu_link = \Drupal::service('entity.repository')->getTranslationFromContext($menu_link);
+      $defaults = [
+        'entity_id' => $menu_link->id(),
+        'id' => $menu_link->getPluginId(),
+        'title' => $menu_link->getTitle(),
+        'title_max_length' => $menu_link->getFieldDefinitions()['title']->getSetting('max_length'),
+        'description' => $menu_link->getDescription(),
+        'menu_name' => $menu_link->getMenuName(),
+        'parent' => $menu_link->getParentId(),
+        'weight' => $menu_link->getWeight(),
+      ];
+    }
+  }
+
+  if (!$defaults) {
+    // Get the default max_length of a menu link title from the base field
+    // definition.
+    $field_definitions = \Drupal::service('entity_field.manager')->getBaseFieldDefinitions('menu_link_content');
+    $max_length = $field_definitions['title']->getSetting('max_length');
+    $defaults = [
+      'entity_id' => 0,
+      'id' => '',
+      'title' => '',
+      'title_max_length' => $max_length,
+      'description' => '',
+      'menu_name' => $menu_name,
+      'parent' => '',
+      'weight' => 0,
+    ];
+  }
+  return $defaults;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for \Drupal\node\NodeTypeForm.
+ *
+ * Adds menu options to the node type form.
+ *
+ * @see NodeTypeForm::form()
+ * @see node_menus_form_node_type_form_submit()
+ */
+function node_menus_form_node_type_form_alter(&$form, FormStateInterface $form_state) {
+  /** @var \Drupal\Core\Menu\MenuParentFormSelectorInterface $menu_parent_selector */
+  $menu_parent_selector = \Drupal::service('menu.parent_form_selector');
+  $menu_options = array_map(function (MenuInterface $menu) {
+    return $menu->label();
+  }, Menu::loadMultiple());
+  asort($menu_options);
+  /** @var \Drupal\node\NodeTypeInterface $type */
+  $type = $form_state->getFormObject()->getEntity();
+
+  $form['node_menus'] = [
+    '#type' => 'details',
+    '#title' => t('Language menu settings'),
+    '#description' => t('Make sure the content type is translatable and more than one language is added. The language selection must be also visible on the form.'),
+    '#attached' => [
+      'library' => ['node_menus/admin'],
+    ],
+    '#group' => 'additional_settings',
+    '#tree' => TRUE,
+  ];
+
+  $form['node_menus']['enable_language_menus'] = [
+    '#type' => 'checkbox',
+    '#title' => t('Enable language menus'),
+    '#default_value' => $type->getThirdPartySetting('node_menus', 'enabled', FALSE),
+  ];
+
+  $options_cacheability = new CacheableMetadata();
+  $options = $menu_parent_selector->getParentSelectOptions('', NULL, $options_cacheability);
+  $options_cacheability->applyTo($form['menu']['menu_parent']);
+
+  $languages = \Drupal::languageManager()->getLanguages();
+  $settings = $type->getThirdPartySetting('node_menus', 'languages', []);
+
+  $form['node_menus']['languages'] = [
+    '#type' => 'contain',
+  ];
+
+  foreach ($languages as $language) {
+    $langcode = $language->getId();
+    $form['node_menus']['languages'][$langcode] = [
+      '#type' => 'fieldset',
+      '#title' => $language->getName(),
+      '#attributes' => [
+        'class' => ['js-node-menus'],
+        'data-langcode' => $langcode,
+      ],
+      '#states' => [
+        'visible' => [
+          ':input[name="node_menus[enable_language_menus]"]' => ['checked' => TRUE],
+        ],
+      ]
+    ];
+
+    $form['node_menus']['languages'][$language->getId()]['menu_options'] = [
+      '#type' => 'checkboxes',
+      '#title' => t('Available menus'),
+      '#default_value' => $settings[$langcode]['available_menus'] ?? ['main'],
+      '#options' => $menu_options,
+      '#description' => t('The menus available to place links in for this content type.'),
+    ];
+
+    $form['node_menus']['languages'][$language->getId()]['menu_parent'] = [
+      '#type' => 'select',
+      '#title' => t('Default parent item'),
+      '#default_value' => $settings[$langcode]['parent'] ?? 'main:',
+      '#options' => $options,
+      '#description' => t('Choose the menu item to be the default parent for a new link in the content authoring form.'),
+      '#attributes' => ['class' => ['menu-title-select']],
+    ];
+  }
+
+  $form['#validate'][] = 'node_menus_form_node_type_form_validate';
+  $form['#entity_builders'][] = 'node_menus_form_node_type_form_builder';
+}
+
+/**
+ * Validate handler for forms with menu options.
+ *
+ * TODO make validation work again.
+ *
+ * @see node_menus_form_node_type_form_alter()
+ */
+function node_menus_form_node_type_form_validate(&$form, FormStateInterface $form_state) {
+  return;
+
+  $available_menus = array_filter($form_state->getValue('menu_options'));
+  // If there is at least one menu allowed, the selected item should be in
+  // one of them.
+  if (count($available_menus)) {
+    $menu_item_id_parts = explode(':', $form_state->getValue(['node_menus', '']));
+    if (!in_array($menu_item_id_parts[0], $available_menus)) {
+      $form_state->setErrorByName('menu_parent', t('The selected menu item is not under one of the selected menus.'));
+    }
+  }
+  else {
+    $form_state->setValue('menu_parent', '');
+  }
+}
+
+/**
+ * Entity builder for the node type form with menu options.
+ *
+ * @see node_menus_form_node_type_form_alter()
+ */
+function node_menus_form_node_type_form_builder($entity_type, NodeTypeInterface $type, &$form, FormStateInterface $form_state) {
+  $type->setThirdPartySetting('node_menus', 'enabled', $form_state->getValue(['node_menus', 'enable_language_menus']));
+  $settings = [];
+  $languages = $form_state->getValue(['node_menus', 'languages']);
+
+  foreach ($languages as $langcode => $language) {
+    $settings[$langcode]['available_menus'] = array_values(array_filter($language['menu_options']));
+    $settings[$langcode]['parent'] = $language['menu_parent'];
+  }
+
+  $type->setThirdPartySetting('node_menus', 'languages', $settings);
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function node_menus_module_implements_alter(&$implementations, $hook) {
+  if (isset($implementations['node_menus'])) {
+    $node_menus = $implementations['node_menus'];
+    unset($implementations['node_menus']);
+    $implementations['node_menus'] = $node_menus;
+  }
+}

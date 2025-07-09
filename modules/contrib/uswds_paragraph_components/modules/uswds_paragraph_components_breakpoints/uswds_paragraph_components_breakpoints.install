@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * @file
+ * USWDS Paragraph Components Columns module install.
+ */
+
+use Drupal\taxonomy\Entity\Term;
+
+/**
+ * Implements hook_install().
+ */
+function uswds_paragraph_components_breakpoints_install() {
+  $vid = 'uswds_breakpoints';
+  $name = 'widescreen';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'widescreen',
+      'vid' => $vid,
+      'weight' => 1,
+      'status' => 0,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'desktop-lg';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'desktop-lg',
+      'vid' => $vid,
+      'weight' => 2,
+      'status' => 0,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'desktop';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'desktop',
+      'vid' => $vid,
+      'weight' => 3,
+      'status' => 1,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'tablet-lg';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'tablet-lg',
+      'vid' => $vid,
+      'weight' => 4,
+      'status' => 0,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'tablet';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'tablet',
+      'vid' => $vid,
+      'weight' => 5,
+      'status' => 1,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'mobile-lg';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'mobile-lg',
+      'vid' => $vid,
+      'weight' => 6,
+      'status' => 0,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'mobile';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'mobile',
+      'vid' => $vid,
+      'weight' => 7,
+      'status' => 1,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'card-lg';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'card-lg',
+      'vid' => $vid,
+      'weight' => 8,
+      'status' => 0,
+    ]);
+    $new_term->save();
+  }
+
+  $name = 'card';
+  $terms = \Drupal::entityTypeManager()
+    ->getStorage('taxonomy_vocabulary')
+    ->loadByProperties([$name, $vid]);
+  if (empty($terms)) {
+    $new_term = Term::create([
+      'name' => 'card',
+      'vid' => $vid,
+      'weight' => 9,
+      'status' => 0,
+    ]);
+    $new_term->save();
+  }
+}

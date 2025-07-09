@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * USWDS Summary Box module file.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function uswds_paragraph_components_summary_box_theme($existing, $type, $theme, $path): array {
+  return [
+    'paragraph__uswds_summary_box' => [
+      'base hook' => 'paragraph',
+      'path' => $path . '/templates',
+    ],
+  ];
+}

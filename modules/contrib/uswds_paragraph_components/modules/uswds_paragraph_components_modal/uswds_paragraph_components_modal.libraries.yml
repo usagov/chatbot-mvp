@@ -1,0 +1,4 @@
+uswds-modal:
+  css:
+    component:
+      css/uswds-paragraph-components-modal.css: { preprocess: false, minified: true }

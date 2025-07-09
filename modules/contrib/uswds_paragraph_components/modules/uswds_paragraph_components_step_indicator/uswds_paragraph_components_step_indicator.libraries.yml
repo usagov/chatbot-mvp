@@ -1,0 +1,4 @@
+uswds-step-indicator-list:
+  css:
+    component:
+      css/uswds-paragraph-components-step-indicator-list.css: { preprocess: false, minified: true }

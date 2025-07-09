@@ -1,0 +1,117 @@
+# USWDS Ckeditor schema
+uswds_ckeditor_integration.settings:
+  type: config_object
+  constraints:
+    FullyValidatable: ~
+  mapping:
+    breakpoints:
+      type: sequence
+      label: 'List of breakpoint configurations'
+      sequence:
+        type: mapping
+        mapping:
+          label:
+            type: label
+          prefix:
+            type: string
+          columns:
+            type: sequence
+            label: 'Columns'
+            sequence:
+              type: mapping
+              mapping:
+                default_layout:
+                  type: string
+                  label: 'Default Layout'
+                  constraints:
+                    FullyValidatable: ~
+                layouts:
+                  type: sequence
+                  label: 'Column layout options'
+                  sequence:
+                    type: mapping
+                    mapping:
+                      label:
+                        type: label
+                      weight:
+                        type: integer
+                        label: 'Weight'
+                        constraints:
+                          Range:
+                            # @see PHP_INT_MIN (32-bit)
+                            min: -2147483648
+                            # @see PHP_INT_MAX (32-bit)
+                            max: 2147483647
+                      settings:
+                        type: sequence
+                        sequence:
+                          label: 'Layout option description'
+                          type: string
+                          constraints:
+                            FullyValidatable: ~
+
+#Ckeditor5 schema
+ckeditor5.plugin.uswds_ckeditor_integration_accordion:
+  type: mapping
+  label: USWDS Accordion
+  mapping:
+    bordered:
+      type: boolean
+      label: 'Default with border'
+      constraints:
+        NotNull: []
+
+ckeditor5.plugin.uswds_ckeditor_integration_ckeditor5_overrides:
+  type: mapping
+  label: USWDS Overrides
+  mapping:
+    override_lists:
+      type: boolean
+      label: 'Use USWDS classes for lists'
+      constraints:
+        NotNull: []
+    override_links:
+      type: boolean
+      label: 'Use USWDS classes for links'
+      constraints:
+        NotNull: []
+    override_tables:
+      type: boolean
+      label: 'Use USWDS classes for tables'
+      constraints:
+        NotNull: []
+
+ckeditor5.plugin.uswds_ckeditor_integration_ckeditor5_table_content_items:
+  type: mapping
+  label: USWDS Table Toolbar
+  mapping:
+    table_content_items:
+      type: boolean
+      label: 'Use USWDS table properties'
+      constraints:
+        NotNull: []
+
+ckeditor5.plugin.uswds_ckeditor_integration_grid:
+  type: mapping
+  label: USWDS Grid
+  mapping:
+    available_columns:
+      type: sequence
+      label: 'Allowed columns.'
+      constraints:
+        FullyValidatable: ~
+      sequence:
+        type: integer
+        label: 'Columns'
+        constraints:
+          Range:
+            min: 1
+            max: 12
+    available_breakpoints:
+      type: sequence
+      label: 'Allowed Breakpoints.'
+      constraints:
+        FullyValidatable: ~
+      sequence:
+        type: machine_name
+        label: 'Breakpoint'

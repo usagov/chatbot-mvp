@@ -1,0 +1,5 @@
+gulpfile.js
+config/*
+js/build/*
+webpack.config.js
+*.yml

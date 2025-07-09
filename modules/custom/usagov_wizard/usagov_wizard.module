@@ -1,0 +1,503 @@
+<?php
+
+/**
+ * @file
+ * Hooks for hogwarts.
+ *
+ * Send variables to the wizard breadcrumbs and page twig,
+ * create new theme suggestions, and alter the form.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\taxonomy\TermInterface;
+use Drupal\usa_twig_vars\TaxonomyDatalayerBuilder;
+use Drupal\usagov_wizard\MenuChecker;
+
+/**
+ * Implements hook_form_FORM_ID_alter()().
+ *
+ * Alter the form by adding a "View Term" button
+ * if the form is the taxonomy_term_wizard_form.
+ *
+ * Hide the meta_description field on all forms except the one for the
+ * root of the tree.
+ *
+ * @param array<string, mixed> $form
+ */
+function usagov_wizard_form_taxonomy_term_wizard_form_alter(array &$form, FormStateInterface $form_state): void {
+  $form['name']['widget'][0]['value']['#description'] = t('Name inside the CMS. This is what you see in the taxonomy tree.');
+  $form['langcode']['widget'][0]['value']['#description'] = '';
+  $form['description']['widget'][0]['#description'] = t('Description for the radio button label.');
+  $form['relations']['parent']['#attributes'] = ['class' => ['resize-vertical', 'width-tablet', 'height-mobile']];
+  $form['relations']['widget'][0]['#description'] = t('You can use the tree to move the node.');
+  $form['relations']['#weight'] = 11;
+  if (isset($form['tid'])) {
+    $language = $form['langcode']['widget'][0]['value']['#default_value'];
+    $url = Url::fromUri('base:' .
+      ($language == 'en' ? '' : 'es/')
+      . 'taxonomy/term/' . $form['tid']["#value"]);
+
+    $form['actions']['link_to_term'] = [
+      '#title' => t('View Term'),
+      '#type' => 'link',
+      '#url' => $url,
+      '#attributes' => [
+        'class' => [
+          'button',
+          'usa-button',
+        ],
+      ],
+      '#weight' => 10,
+    ];
+    if (isset($form['tid']["#value"])) {
+      $taxonomy_term = Term::load($form['tid']["#value"]);
+      $termParents = \Drupal::classResolver(MenuChecker::class);
+      $termParents = $termParents->getTermParents($taxonomy_term);
+      $rootTermTid = $termParents[array_key_last($termParents)];
+      // Hide meta description fields on non-root forms.
+      if ($form['tid']['#value'] != $rootTermTid) {
+        $form['field_meta_description']['#access'] = FALSE;
+        $form['field_wizard_breadcrumbs']['#access'] = FALSE;
+      }
+    }
+    // Hide this in all cases on the tid creation screen.
+    else {
+      $form['field_meta_description']['#access'] = FALSE;
+      $form['field_wizard_breadcrumbs']['#access'] = FALSE;
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Adds a expand/collapse all button to overview form.
+ *
+ * @param array<string, mixed> $form
+ */
+function usagov_wizard_form_taxonomy_overview_terms_alter(array &$form, FormStateInterface $form_state): void {
+  $form['expand_collapse_all'] = [
+    '#title' => t('Expand/Collapse All'),
+    '#type' => 'button',
+    '#value' => 'Expand/Collapse',
+    '#attributes' => [
+      // Don't submit the form on click.
+      'onclick' => 'return false;',
+      'class' => [
+        'button',
+        'usa-button',
+      ],
+    ],
+    '#attached' => [
+      'library' => [
+        'usagov_wizard/expand_collapse',
+      ],
+    ],
+    '#weight' => -10,
+  ];
+
+  $form['unpublished_toggler'] = [
+    '#title' => t('Unpublished/All'),
+    '#type' => 'button',
+    '#value' => 'Unpublished/All',
+    '#attributes' => [
+      // Toggle to hide/unhide published nodes.
+      'onclick' => 'return false;',
+      'class' => [
+        'button',
+        'usa-button',
+      ],
+    ],
+    '#attached' => [
+      'library' => [
+        'usagov_wizard/unpublished_toggler',
+      ],
+    ],
+    '#weight' => -10,
+  ];
+}
+
+/**
+ * Implements hook_theme_suggestions_html_alter().
+ *
+ * @param string[] $suggestions
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_theme_suggestions_html_alter(array &$suggestions, array &$variables): void {
+  $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomy_term instanceof Term) {
+    $suggestions[] = 'html__taxonomy__term__' . $taxonomy_term->bundle();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ *
+ * @param string[] $suggestions
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_theme_suggestions_page_alter(array &$suggestions, array &$variables): void {
+  $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomy_term instanceof Term) {
+    $suggestions[] = 'page__taxonomy__term__' . $taxonomy_term->bundle();
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ *
+ * Custom region_header_top so we can have a custom mobile nav menu generated
+ * from MenuChecker.php.
+ *
+ * @param string[] $suggestions
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_theme_suggestions_region_alter(array &$suggestions, array &$variables): void {
+  $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomy_term instanceof Term) {
+    $suggestions[] = 'region__' . $variables['elements']['#region'] . '_' . $taxonomy_term->bundle();
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Set values for the dataLayer and tracking scripts.
+ *
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_preprocess_html(&$variables): void {
+  if (\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+    $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    if (isset($taxonomy_term)) {
+      if ($taxonomy_term->bundle() === 'wizard') {
+
+        if (isset($taxonomy_term->field_meta_description)) {
+          $variables['meta_description'] = $taxonomy_term->field_meta_description->value;
+        }
+
+        // USAGOV-1989: When the meta_description is empty, fall back to the page intro
+        if (empty($variables['meta_description']) && !empty($taxonomy_term->field_intro)) {
+          $variables['meta_description'] = $taxonomy_term->field_intro->value;
+        }
+
+        // Set a bunch of other stuff...
+        $variables['language'] = $taxonomy_term->langcode->value;
+        $variables['currentPath'] = $taxonomy_term->toUrl()->toString();
+
+        $term_children = Drupal::entityTypeManager()
+          ->getStorage('taxonomy_term')
+          ->loadChildren($taxonomy_term->tid->value);
+        if (!empty($term_children)) {
+          $variables['has_child'] = TRUE;
+        }
+        else {
+          $variables['has_child'] = FALSE;
+        }
+
+        if ($taxonomy_term->hasField('parent')) {
+          $parent_tid = $taxonomy_term->parent->getValue()[0]['target_id'];
+          if ($parent_tid === '0') {
+            $variables['start_page'] = TRUE;
+          }
+        }
+
+        if (isset($taxonomy_term->tid)) {
+          $variables['tid'] = $taxonomy_term->tid->value;
+          $variables['vid'] = $taxonomy_term->bundle();
+          $variables['name'] = $taxonomy_term->name->value;
+        }
+
+        if (isset($taxonomy_term->field_heading->value)) {
+          $variables['wizard_head_title'] = $taxonomy_term->field_heading->value;
+        }
+        elseif (isset($variables['name'])) {
+          $variables['wizard_head_title'] = $variables['name'];
+        }
+
+        if (isset($taxonomy_term->field_header_html)) {
+          if (isset($taxonomy_term->field_header_html->value)) {
+            $variables['header_html'] = $taxonomy_term->field_header_html->value;
+          }
+        }
+
+        $menuChecker = \Drupal::classResolver(MenuChecker::class);
+        $menuEntities = $menuChecker->getMenuEntities($variables['language']);
+
+        /* Primary entity is the parent menu entity that we are basing the left
+        hand nav off of. It also guides the content so it's useful to pass
+        information about it to the twig. */
+        if (isset($menuEntities['primary_entity'])) {
+          $wizard_title = $menuEntities['primary_entity']->title->value;
+          try {
+            $wizard_title_url = $menuEntities['primary_entity']->getUrlObject()->toString();
+          }
+          catch (\Exception $e) {
+            $wizard_title_url = '';
+          }
+          $variables['wizardTitle'] = $wizard_title;
+          $variables['wizardTitleUrl'] = $wizard_title_url;
+        }
+        else {
+          $parents = $menuChecker->getTermParents($taxonomy_term);
+          if ($topParent = Term::load($parents[0])) {
+            $variables['wizardTitle'] = $topParent->getName();
+            $variables['wizardTitleUrl'] = \Drupal::service('path_alias.manager')
+              ->getAliasByPath('/taxonomy/term/' . $topParent->id());
+
+            // Make sure Spanish-paths are prefixed with /es/
+            $langCode = $taxonomy_term->language()->getId();
+            if ($langCode === 'es' && !str_starts_with($variables['wizardTitleUrl'], '/es/')) {
+              $variables['wizardTitleUrl'] = '/' . $langCode . $variables['wizardTitleUrl'];
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Preprocess the page by retrieving information about the taxonomy term,
+ * checking its parent terms, and matching it with menu entities.
+ * The matched menu entities are then sorted by weight and added to the page
+ * variables.
+ *
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_preprocess_page(&$variables): void {
+  $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomy_term instanceof Term) {
+    if ($taxonomy_term->bundle() === 'wizard') {
+      $menuChecker = \Drupal::classResolver(MenuChecker::class);
+
+      // Get an array of the current taxonomy term id and all of its parent ids.
+      $termParents = $menuChecker->getTermParents($taxonomy_term);
+
+      $langcode = $variables['language']->getId();
+
+      /* Get an array of all the menu entities in the specified menu leading to
+      taxonomy terms.*/
+      $menuEntities = $menuChecker->getMenuEntities($langcode);
+
+      if (isset($menuEntities['menu_entities'])) {
+        $menuEntities = $menuEntities['menu_entities'];
+      }
+
+      $wizardMenuEntities = [];
+      // See if there are any matches between the ids in the current wizard and
+      // the ids of the taxonomy terms linked to in the menu.
+      if ($menuEntities) {
+        foreach ($termParents as $key) {
+          if (array_key_exists($key, $menuEntities)) {
+            $wizardMenuEntities = array_merge($wizardMenuEntities, $menuEntities[$key]);
+          }
+        }
+        /* If there are matches, send information about the menu entities to the
+        twig.*/
+        if ($wizardMenuEntities) {
+          $entities = array_map(function ($wizardMenuEntity) {
+            return [
+              'label' => $wizardMenuEntity->title->value,
+              'link' => Url::fromUri($wizardMenuEntity->link->uri)
+                ->toString(),
+              'weight' => $wizardMenuEntity->getWeight(),
+            ];
+          }, $wizardMenuEntities);
+          usort($entities, function ($item1, $item2) {
+            return $item1['weight'] <=> $item2['weight'];
+          });
+
+          $variables['menu_entities'] = $entities;
+          $variables['page']['header_top']['#menu_entities'] = $entities;
+        }
+      }
+    }
+
+    if (isset($taxonomy_term->field_language_toggle[0]->target_id)) {
+      $variables['translation'] = $taxonomy_term->field_language_toggle->getValue()[0]['target_id'];
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_taxonomy_term().
+ *
+ * Determine where the current page sits in the taxonomy hierarchy and send this
+ * information to the twig so we can decide which of the "previous, next, start
+ * over' buttons/links to show.
+ *
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_preprocess_taxonomy_term(&$variables): void {
+  if ($variables['term']->bundle() == 'wizard') {
+    $parent_tid = $variables['term']->hasField('parent') ? $variables['term']->get('parent')->target_id : NULL;
+    $variables['parent_tid'] = $parent_tid;
+
+    /* If there's a parent_tid, this is a child page.
+     * In the twig, use this information to decide whether to display the
+     * previous button. Use the url from the $parent_tid to set the path in that
+     * button
+     */
+
+    if ($parent_tid) {
+      $variables['child'] = TRUE;
+    }
+    else {
+      $variables['child'] = FALSE;
+    }
+
+    $term_children = Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadChildren($variables['term']->id());
+    if (!empty($term_children)) {
+      $variables['has_child'] = TRUE;
+    }
+    else {
+      $variables['has_child'] = FALSE;
+    }
+
+    $menuChecker = \Drupal::classResolver(MenuChecker::class);
+    $parents = $menuChecker->getTermParents($variables['elements']['#taxonomy_term']);
+
+    /*
+     * Get an array of all the term's parents. Check the last loop of the array.
+     * This is the root of the tree. Set the $root_tid to equal $parent. If the
+     * page we are on is not the root of the tree (parent_tid != root_tid) and
+     * the page we are on is not the root itself, tell the twig to show the
+     * start_over link.
+     *
+     * Finally, check the second to last loop of the array.
+     * The url for the start_over link should be the tid of this loop.
+     */
+    $counter = 0;
+    foreach ($parents as $parent) {
+      if ($counter == count($parents) - 1) {
+        $root_tid = $parent;
+        if ($parent_tid != $root_tid && $root_tid != $variables['term']->id()) {
+          $variables['start_over'] = 'true';
+        }
+        else {
+          $variables['start_over'] = 'false';
+        }
+      }
+      elseif ($counter == count($parents) - 2) {
+        $variables['start_over_target_tid'] = $parent;
+      }
+      $counter = $counter + 1;
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ *
+ * Send the values in the root term's field_wizard_breadcrumbs to the twig.
+ *
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_preprocess_breadcrumb(&$variables): void {
+  $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomy_term instanceof Term) {
+    if ($taxonomy_term->bundle() === 'wizard') {
+      $menuChecker = \Drupal::classResolver(MenuChecker::class);
+      $parents = $menuChecker->getTermParents($taxonomy_term);
+      if ($rootTermTid = $parents[array_key_last($parents)]) {
+        $rootTerm = Term::load($rootTermTid);
+        $variables['wizard_breadcrumb'] = usagov_wizard_get_term_breadcrumb($rootTerm);
+      }
+    }
+  }
+}
+
+/**
+ * @return array<array{url: string, text: string, title: string, uri: string, _attribute: array<string, mixed>, options: array<string, mixed>}>
+ */
+function usagov_wizard_get_term_breadcrumb(TermInterface $rootTerm): array {
+  if (isset($rootTerm->field_wizard_breadcrumbs)) {
+    $crumbs = $rootTerm->field_wizard_breadcrumbs->getValue();
+    $result = [];
+    $alias_manager = \Drupal::service('path_alias.manager');
+    foreach ($crumbs as $crumb) {
+      if (isset($crumb['uri'])) {
+
+        if (str_starts_with($crumb['uri'], 'internal:')) {
+          // We need to handle when an internal path to a Spanish page is part of
+          // the breadcrumb but without an /es/ prefix.
+          $path = preg_replace('/^internal\:/', '', $crumb['uri']);
+          $path = $alias_manager->getPathByAlias($path, $rootTerm->language()->getId());
+          $url = Url::fromUri('internal:' . $path, ['language' => $rootTerm->language()])->toString();
+          if ($url) {
+            $crumb['url'] = $url;
+          }
+        }
+
+        // Setting the language here assumes all the crumbs are pages from the same language
+        // as the root term.
+        if (!isset($crumb['url'])) {
+          $crumb['url'] = Url::fromUri($crumb['uri'], ['language' => $rootTerm->language()])->toString();
+        }
+      }
+      if (isset($crumb['title'])) {
+        $crumb['text'] = $crumb['title'];
+      }
+
+      $result[] = $crumb;
+    }
+
+    $language = $rootTerm->language()->getId();
+    $home = [
+      'text' => $language === 'en' ? TaxonomyDatalayerBuilder::HOME_TITLE_EN : TaxonomyDatalayerBuilder::HOME_TITLE_ES,
+      'url' => $language === 'en' ? TaxonomyDatalayerBuilder::HOME_URL_EN : TaxonomyDatalayerBuilder::HOME_URL_ES,
+    ];
+    if ($crumbs != NULL) {
+      array_unshift($result, $home);
+    }
+    return $result;
+  }
+
+  return [];
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_preprocess_views_view_field__wizard_options(&$variables): void {
+  // The tid of the term that is generating the option.
+  $target_taxonomy_term = $variables['row']->tid;
+  $term = Term::load($target_taxonomy_term);
+
+  if (isset($term->field_option_name)) {
+    $option_name = $term->field_option_name->value;
+    $variables['option_name'] = $option_name;
+  }
+}
+
+/**
+ * Implements hook_preprocess_views_view_unformatted().
+ *
+ * @param array<string, mixed> $variables
+ */
+function usagov_wizard_preprocess_views_view_unformatted(&$variables): void {
+  $taxonomy_term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($taxonomy_term instanceof Term) {
+    if ($taxonomy_term->bundle() === 'wizard') {
+      $tid = $taxonomy_term->id();
+      $term = Term::load($tid);
+      if (isset($term->field_heading->value)) {
+        if (strlen($term->field_heading->value) > 1) {
+          $variables['legend'] = $term->field_heading->value;
+        }
+      }
+      else {
+        $variables['legend'] = $term->get('name')->value;
+      }
+    }
+  }
+}

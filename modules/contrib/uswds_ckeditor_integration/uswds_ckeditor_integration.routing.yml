@@ -1,0 +1,15 @@
+uswds_ckeditor_integration.dialog:
+  path: '/uswds_ckeditor_integration/dialog/{editor}'
+  defaults:
+    _form: '\Drupal\uswds_ckeditor_integration\Form\GridDialog'
+    _title: 'Grid Dialog'
+  requirements:
+    _permission: 'access content'
+
+uswds_ckeditor_integration.settings:
+  path: '/admin/config/content/ckeditor_uswds_ck_grid'
+  defaults:
+    _form: '\Drupal\uswds_ckeditor_integration\Form\Settings'
+    _title: 'CKEditor USWDS Integration Grid'
+  requirements:
+    _permission: 'administer uswds_ckeditor_integration_grid'

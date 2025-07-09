@@ -1,0 +1,24 @@
+{
+    "name": "drupal/uswds_paragraph_components",
+    "description": "A suite of Paragraph bundles made with the USWDS framework.",
+    "type": "drupal-module",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Stephen Mustgrave",
+            "email": "smustgrave@gmail.com",
+            "role": "Maintainer"
+        }
+    ],
+    "homepage": "https://drupal.org/project/uswds_paragraph_components",
+    "support": {
+        "issues": "https://drupal.org/project/issues/uswds_paragraph_components",
+        "source": "https://git.drupalcode.org/project/uswds_paragraph_components"
+    },
+    "require": {
+        "drupal/paragraphs": "^1.17",
+        "drupal/field_group": "^3.4",
+        "drupal/twig_tweak": "^3.2",
+        "drupal/viewsreference": "^2.0"
+    }
+}

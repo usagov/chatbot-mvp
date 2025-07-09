@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uswds_card_breakpoints.field_uswds_breakpoints
+    - paragraphs.paragraphs_type.uswds_card_breakpoints
+third_party_settings: {  }
+id: paragraph.uswds_card_breakpoints.default
+targetEntityType: paragraph
+bundle: uswds_card_breakpoints
+mode: default
+content:
+  field_uswds_breakpoints:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

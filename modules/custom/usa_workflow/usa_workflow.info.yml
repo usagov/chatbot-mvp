@@ -1,0 +1,4 @@
+name: 'USA Workflow'
+type: module
+description: 'Functionality related to Content Moderation.'
+core_version_requirement: ^9 || ^10

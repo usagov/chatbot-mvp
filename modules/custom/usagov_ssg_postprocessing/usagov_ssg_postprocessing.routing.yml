@@ -1,0 +1,35 @@
+usagov_ssg_postprocessing.main:
+  path: '/admin/config/usagov_ssg_postprocessing/main'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'USAGov SSG and HTML PostProcessing'
+  requirements:
+    _permission: 'administer site configuration'
+
+usagov_ssg_postprocessing.toggle_tome:
+  path: '/admin/config/usagov_ssg_postprocessing/toggle_tome'
+  defaults:
+    _title: 'Toggle Static Site Generation'
+    _form: '\Drupal\usagov_ssg_postprocessing\Form\ToggleStaticSiteGenerationForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+usagov_ssg_postprocessing.content:
+  path: '/static-site-status'
+  defaults:
+    _controller: '\Drupal\usagov_ssg_postprocessing\Controller\SsgStatController::content'
+    _title: 'Tome Status'
+  options:
+    no_cache: 'TRUE'
+  requirements:
+    _permission: 'access administration pages'
+
+usagov_ssg_postprocessing.site_lag_test:
+  path: '/site-lag-test'
+  defaults:
+    _controller: '\Drupal\usagov_ssg_postprocessing\Controller\SsgStatController::siteLagTest'
+    _title: 'Tome Status'
+  options:
+    no_cache: 'TRUE'
+  requirements:
+    _permission: 'access administration pages'

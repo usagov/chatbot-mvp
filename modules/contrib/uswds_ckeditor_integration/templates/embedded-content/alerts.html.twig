@@ -1,0 +1,19 @@
+{% set alert_classes = [
+  'usa-alert',
+  severity == 'informative' ? ' usa-alert--info',
+  severity == 'warning' ? ' usa-alert--warning',
+  severity == 'error' ? ' usa-alert--error',
+  severity == 'success' ? ' usa-alert--success',
+  slim ? ' usa-alert--slim',
+  no_icon ? ' usa-alert--no-icon'
+]
+%}
+
+<div {{ attributes.addClass(alert_classes) }}>
+  <div class="usa-alert__body">
+    <h4 class="usa-alert__heading">{{ heading }}</h4>
+    <p class="usa-alert__text">
+      {{ body }}
+    </p>
+  </div>
+</div>

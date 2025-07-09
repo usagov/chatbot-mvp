@@ -1,0 +1,5 @@
+.field__item:not(:last-child) .usa-step-indicator {
+  padding: 2rem 0;
+  border-bottom: 1px solid #d3d3d3ff;
+}
+

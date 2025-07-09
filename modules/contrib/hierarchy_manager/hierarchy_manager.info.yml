@@ -1,0 +1,13 @@
+name: Hierarchy Manager
+description: Provides API and plugins to build hierarchy views for entities such as taxonomy or menu.
+package: Administration
+
+type: module
+core_version_requirement: ^9.2.0 || ^10 || ^11
+
+configure: hierarchy_manager.hm_config_form
+
+# Information added by Drupal.org packaging script on 2024-08-09
+version: '3.4.1'
+project: 'hierarchy_manager'
+datestamp: 1723244798

@@ -1,0 +1,5 @@
+uswds_ckeditor_integration.settings:
+  title: 'CKEditor USWDS Grid'
+  parent: system.admin_config_content
+  description: 'Settings for CKEditor USWDS Grid.'
+  route_name: uswds_ckeditor_integration.settings

@@ -1,0 +1,2901 @@
+langcode: en
+breakpoints:
+  card:
+    label: Card
+    prefix: none
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  card_lg:
+    label: 'Card Large'
+    prefix: card-lg
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: '2'
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  mobile:
+    label: Mobile
+    prefix: mobile
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  mobile_lg:
+    label: 'Mobile Large'
+    prefix: mobile-lg
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  tablet:
+    label: Tablet
+    prefix: tablet
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  tablet_lg:
+    label: 'Tablet Large'
+    prefix: tablet-lg
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  desktop:
+    label: Desktop
+    prefix: desktop
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  desktop_lg:
+    label: 'Desktop Large'
+    prefix: desktop-lg
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal
+  widescreen:
+    label: Widescreen
+    prefix: widescreen
+    columns:
+      1:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+      2:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+          -
+            label: '25% / 75%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '9'
+          -
+            label: '33% / 66%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '8'
+          -
+            label: '66% / 33%'
+            weight: 0
+            settings:
+              col-1: '8'
+              col-2: '4'
+          -
+            label: '75% / 25%'
+            weight: 0
+            settings:
+              col-1: '9'
+              col-2: '3'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+      3:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+          -
+            label: '50% / 25% / 25%'
+            weight: 0
+            settings:
+              col-1: '6'
+              col-2: '3'
+              col-3: '3'
+          -
+            label: '25% / 50% / 25%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '6'
+              col-3: '3'
+          -
+            label: '25% / 25% / 50%'
+            weight: 0
+            settings:
+              col-1: '3'
+              col-2: '3'
+              col-3: '6'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+      4:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+          -
+            label: '33% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+          -
+            label: '17% / 33% / 17% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '4'
+          -
+            label: '17% / 33% / 33% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '4'
+              col-4: '2'
+          -
+            label: '17% / 17% / 33% / 33%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '4'
+          -
+            label: 'Full Width'
+            weight: 0
+            settings:
+              col-1: '12'
+              col-2: '12'
+              col-3: '12'
+              col-4: '12'
+      5:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+          -
+            label: Auto
+            weight: 0
+            settings:
+              col-1: auto
+              col-2: auto
+              col-3: auto
+              col-4: auto
+              col-5: auto
+          -
+            label: '33% / 17% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '4'
+              col-2: '2'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 33% / 17% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '4'
+              col-3: '2'
+              col-4: '2'
+              col-5: '2'
+          -
+            label: '17% / 17% / 33% / 17% / 17%'
+            weight: 0
+            settings:
+              col-1: '2'
+              col-2: '2'
+              col-3: '4'
+              col-4: '2'
+              col-5: '2'
+      6:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+      7:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+      8:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+      9:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+      10:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+      11:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+      12:
+        default_layout: none
+        layouts:
+          -
+            label: 'Equal Width'
+            weight: 0
+            settings:
+              col-1: equal
+              col-2: equal
+              col-3: equal
+              col-4: equal
+              col-5: equal
+              col-6: equal
+              col-7: equal
+              col-8: equal
+              col-9: equal
+              col-10: equal
+              col-11: equal
+              col-12: equal

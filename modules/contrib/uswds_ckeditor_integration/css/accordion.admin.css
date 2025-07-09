@@ -1,0 +1,79 @@
+/* Icons */
+.ckeditor5-toolbar-button-UswdsAccordionToolbar {
+  background-image: url("../images/icons/accordion/ckeditor-accordion.svg");
+}
+
+.ckeditor5-toolbar-button-accordionAddAbove {
+  background-image: url("../images/icons/accordion/ckeditor-accordion-add-above.svg");
+}
+
+.ckeditor5-toolbar-button-iconAddBelow {
+  background-image: url("../images/icons/accordion/ckeditor-accordion-add-below.svg");
+}
+
+.ckeditor5-toolbar-button-iconDelete {
+  background-image: url("../images/icons/accordion/ckeditor-accordion-remove.svg");
+}
+
+/* Helper styles */
+.usa-accordion {
+  position: relative;
+  padding: 40px 10px 20px;
+  border: dashed 2px #d81b60;
+}
+
+.usa-accordion .ckeditor-accordion-title {
+  position: relative;
+  display: block;
+  margin: 45px 0 10px;
+  padding: 5px 10px;
+  border: dashed 1px #1e88e5 !important;
+}
+
+.usa-accordion .ckeditor-accordion-title:first-of-type {
+  margin-top: 20px;
+}
+
+.usa-accordion .ckeditor-accordion-title::before {
+  position: absolute;
+  top: -22px;
+  left: -1px;
+  display: inline-block;
+  padding: 5px;
+  content: "Row title";
+  color: #fff;
+  background: #1e88e5;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.usa-accordion .ckeditor-accordion-content {
+  position: relative;
+  display: block;
+  margin: 25px 0 10px;
+  padding: 5px 10px;
+  border: dashed 1px #43a047 !important;
+}
+
+.usa-accordion .ckeditor-accordion-content::before {
+  position: absolute;
+  top: -22px;
+  left: -1px;
+  display: inline-block;
+  padding: 5px;
+  content: "Row content";
+  color: #fff;
+  background: #43a047;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.usa-accordion::before {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  display: block;
+  padding: 5px 10px 0;
+  content: "USWDS Accordion";
+  font-weight: bold;
+}

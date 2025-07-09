@@ -1,0 +1,11 @@
+services:
+  usagov_wizard.menu_checker:
+    class: Drupal\usagov_wizard\MenuChecker
+    arguments:
+      - '@entity_type.manager'
+      - '@entity.repository'
+  usagov_wizard_datalayer_alter_subscriber:
+    class: '\Drupal\usagov_wizard\EventSubscriber\DatalayerAlterSubscriber'
+    arguments: ['@current_route_match', '@entity_type.manager']
+    tags:
+      - { name: 'event_subscriber' }

@@ -1,0 +1,4 @@
+uswds-alerts:
+  css:
+    component:
+      css/uswds-paragraph-components-alerts.css: { preprocess: false, minified: true }

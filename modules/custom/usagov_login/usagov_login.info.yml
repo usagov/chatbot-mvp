@@ -1,0 +1,5 @@
+name: USAgov Login Customizations
+type: module
+description: Module description.
+package: USAgov
+core_version_requirement: ^9 || ^10

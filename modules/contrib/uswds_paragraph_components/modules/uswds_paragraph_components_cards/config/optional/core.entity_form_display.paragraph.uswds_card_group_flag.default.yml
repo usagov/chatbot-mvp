@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.uswds_card_group_flag.field_alternating_flags
+    - field.field.paragraph.uswds_card_group_flag.field_cards
+    - field.field.paragraph.uswds_card_group_flag.field_uswds_classes
+    - paragraphs.paragraphs_type.uswds_card_group_flag
+  module:
+    - paragraphs
+id: paragraph.uswds_card_group_flag.default
+targetEntityType: paragraph
+bundle: uswds_card_group_flag
+mode: default
+content:
+  field_alternating_flags:
+    weight: 1
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_cards:
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: uswds_cards_flag
+      features:
+        add_above: add_above
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+    type: paragraphs
+    region: content
+  field_uswds_classes:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true

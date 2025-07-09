@@ -1,0 +1,49 @@
+/**
+ * @file
+ * Styles for Entity Browser's modal windows.
+ */
+
+.ckeditor5-toolbar-button-paragraphs {
+  background-image: url(../icons/paragraph.svg);
+}
+
+.paragraph-select-dialog iframe {
+  height: 50%;
+  border: none;
+}
+
+.paragraph-select-dialog.ckeditor5-paragraph-embed-modal .ui-dialog-content {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.paragraph-select-dialog.ckeditor5-paragraph-embed-modal iframe {
+  flex-grow: 1;
+}
+
+.ui-dialog--narrow.paragraph-select-dialog .ui-widget-content.ui-dialog-content {
+  overflow: hidden;
+}
+
+.ui-dialog--narrow.paragraph-select-dialog {
+  max-width: 1200px;
+}
+
+@media screen and (min-width: 768px) {
+  .ui-dialog--narrow.paragraph-select-dialog iframe {
+    min-width: 730px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .ui-dialog--narrow.paragraph-select-dialog iframe {
+    min-width: 950px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ui-dialog--narrow.paragraph-select-dialog iframe {
+    min-width: 1140px;
+  }
+}

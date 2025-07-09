@@ -1,0 +1,12 @@
+<ol class="usa-process-list">
+  {% for item in process_items %}
+  <li class="usa-process-list__item">
+    <h4 class="usa-process-list__heading">{{ item['#heading'] }}</h4>
+    {% if item['#body'] is not empty %}
+      <p class="margin-top-05">
+        {{ item['#body'] }}
+      </p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ol>

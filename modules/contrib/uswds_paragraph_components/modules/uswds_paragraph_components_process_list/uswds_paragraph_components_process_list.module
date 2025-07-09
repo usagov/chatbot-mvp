@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * USWDS Process list module file.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function uswds_paragraph_components_process_list_theme($existing, $type, $theme, $path): array {
+  return [
+    'paragraph__uswds_process_list' => [
+      'base hook' => 'paragraph',
+      'path' => $path . '/templates',
+    ],
+  ];
+}

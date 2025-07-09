@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * USWDS Breakpoints module file.
+ */
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ */
+function uswds_paragraph_components_breakpoints_field_widget_uswds_paragraph_components_paragraphs_form_alter(&$element, &$form_state, $context) {
+  if (isset($element['#paragraph_type']) && ($element['#paragraph_type'] == 'uswds_card_breakpoints' ||
+      $element['#paragraph_type'] == 'uswds_3_column_breakpoints' ||
+      $element['#paragraph_type'] == 'uswds_2_column_breakpoints')) {
+
+    if (isset($element['subform']['field_uswds_breakpoints'])) {
+      if ($context['widget']->getSetting('disable_breakpoints')) {
+        $element['subform']['field_uswds_breakpoints']['widget']['#disabled'] = TRUE;
+      }
+      if (empty($element['subform']['field_uswds_breakpoints']['widget']['#default_value']) && !empty($context['form']['#custom_tids'])) {
+        $element['subform']['field_uswds_breakpoints']['widget']['#default_value'] = $context['form']['#custom_tids'][$context['delta']];
+      }
+    }
+  }
+}

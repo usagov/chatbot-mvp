@@ -1,0 +1,4 @@
+name: 'USA Contact Center API'
+type: module
+description: 'API to support Contact Center content transfer.'
+core_version_requirement: ^9 || ^10

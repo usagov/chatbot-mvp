@@ -1,0 +1,83 @@
+uswds_ckeditor_integration_accordion:
+  ckeditor5:
+    plugins:
+      - uswds_accordion.UswdsAccordion
+    config:
+      uswdsAccordionConfig:
+        contentToolbar: [accordionAddAbove, accordionAddBelow, accordionRemove]
+  drupal:
+    label: USWDS Accordion
+    library: uswds_ckeditor_integration/uswds_accordion
+    admin_library: uswds_ckeditor_integration/uswds_accordion.admin
+    class: Drupal\uswds_ckeditor_integration\Plugin\CKEditor5Plugin\UswdsAccordion
+    toolbar_items:
+      UswdsAccordionToolbar:
+        label: USWDS Accordion
+    elements:
+      - <div class id>
+      - <h4 class>
+      - <button>
+      - <button class type aria-expanded aria-controls>
+
+uswds_ckeditor_integration_grid:
+  # Configuration that will be sent to CKEditor 5 JavaScript plugins.
+  ckeditor5:
+    plugins:
+      - uswds_grid.UswdsGrid
+    config:
+      uswdsGrid:
+        openDialog:
+          func:
+            name: Drupal.ckeditor5.openDialog
+            invoke: false
+        dialogSettings:
+          height: 75%
+          width: 75%
+          dialogClass: grid-widget-modal
+          title: Grid Settings
+
+  # Configuration that will be used directly by Drupal.
+  drupal:
+    label: USWDS Grid
+    # The library loaded while using the editor.
+    library: uswds_ckeditor_integration/uswds_grid
+    # The library loaded when configuring the text format using this plugin.
+    admin_library: uswds_ckeditor_integration/uswds_grid.admin
+    class: Drupal\uswds_ckeditor_integration\Plugin\CKEditor5Plugin\UswdsGrid
+    toolbar_items:
+      uswdsGrid:
+        label: USWDS Grid
+    elements:
+      - <div>
+      - <div class data-*>
+
+uswds_ckeditor_integration_ckeditor5_overrides:
+  ckeditor5:
+    plugins:
+      - uswds_overrides.UswdsOverrides
+  drupal:
+    label: USWDS Overrides
+    class: Drupal\uswds_ckeditor_integration\Plugin\CKEditor5Plugin\UswdsOverrideDefaults
+    library: uswds_ckeditor_integration/uswds_overrides
+    elements: false
+
+uswds_ckeditor_integration_ckeditor5_table_content_items:
+  ckeditor5:
+    plugins:
+      - uswds_table_content_items.UswdsTableContentItems
+    config:
+      table:
+        contentToolbar: [ tableUswds ]
+  drupal:
+    label: USWDS Table Toolbar Items
+    class: Drupal\uswds_ckeditor_integration\Plugin\CKEditor5Plugin\UswdsTableContentItems
+    library: uswds_ckeditor_integration/uswds_table_content_items
+    elements:
+      - <div class aria-live>
+      - <table class>
+      - <th scope data-label data-sortable role>
+      - <td data-label data-sort-value>
+    conditions:
+      requiresConfiguration:
+        table_content_items: true
+      plugins: [ckeditor5_table]

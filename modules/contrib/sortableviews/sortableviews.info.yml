@@ -1,0 +1,12 @@
+name: Sortable Views
+type: module
+description: 'Enables users to sort views by using drag and drop'
+package: Views
+core_version_requirement: ^8.8 || ^9 || ^10 || ^11
+dependencies:
+  - drupal:views
+
+# Information added by Drupal.org packaging script on 2024-08-13
+version: '8.x-1.3'
+project: 'sortableviews'
+datestamp: 1723559496

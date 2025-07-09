@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Hooks and module logic for USWDS Ckeditor Integration.
+ */
+
+use Drupal\editor\Entity\Editor;
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ */
+function uswds_ckeditor_integration_ckeditor_css_alter(array &$css, Editor $editor): void {
+  $css[] = \Drupal::service('extension.list.module')->getPath('uswds_ckeditor_integration') . '/css/uswds_ckeditor.css';
+}
+
+/**
+ * Implements hook_theme().
+ */
+function uswds_ckeditor_integration_theme($existing, $type, $theme, $path): array {
+  return [
+    'uswds_ckeditor_accordion' => [
+      'variables' => [
+        'items' => NULL,
+        'bordered' => NULL,
+        'multiselect' => NULL,
+        'startcollapsed' => NULL,
+      ],
+      'template' => 'embedded-content/accordion',
+    ],
+    'uswds_ckeditor_alert' => [
+      'variables' => [
+        'severity' => NULL,
+        'slim' => NULL,
+        'no_icon' => NULL,
+        'heading' => NULL,
+        'body' => NULL,
+      ],
+      'template' => 'embedded-content/alerts',
+    ],
+    'uswds_ckeditor_process_list' => [
+      'variables' => [
+        'process_items' => NULL,
+      ],
+      'template' => 'embedded-content/process-list',
+    ],
+    'uswds_ckeditor_integration_summary_box' => [
+      'variables' => [
+        'heading' => NULL,
+        'body' => NULL,
+      ],
+      'template' => 'embedded-content/summary-box',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function uswds_ckeditor_integration_page_attachments_alter(array &$page): void {
+  // Attaches css assets globally.
+  $page['#attached']['library'][] = 'uswds_ckeditor_integration/uswds_accordion.frontend';
+}

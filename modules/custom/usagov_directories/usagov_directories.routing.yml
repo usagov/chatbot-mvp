@@ -1,0 +1,31 @@
+usagov_directories.main:
+  path: '/admin/config/usagov_directories/main'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'USAGov Directories Tools'
+  requirements:
+    _permission: 'administer site configuration'
+
+usagov_directories.add_acronyms_form:
+  path: '/admin/config/usagov_directories/add_acronyms'
+  defaults:
+    _title: 'Add Acronyms'
+    _form: '\Drupal\usagov_directories\Form\DirectoryRecordsAddAcronymsForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+usagov_directories.add_toggles_form:
+  path: '/admin/config/usagov_directories/add_language_toggles'
+  defaults:
+    _title: 'Add Language Toggles'
+    _form: '\Drupal\usagov_directories\Form\DirectoryRecordsAddTogglesForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+usagov_directories.add_synonyms_form:
+  path: '/admin/config/usagov_directories/add_synonyms'
+  defaults:
+    _title: 'Add Synonyms'
+    _form: '\Drupal\usagov_directories\Form\DirectoryRecordsAddSynonymsForm'
+  requirements:
+    _permission: 'administer site configuration'

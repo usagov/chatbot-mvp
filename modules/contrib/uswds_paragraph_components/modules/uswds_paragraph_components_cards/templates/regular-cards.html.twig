@@ -1,0 +1,36 @@
+{% set header_first = item['#paragraph'].field_title_first.value ? ' usa-card--header-first' %}
+{% set card_link = item['#paragraph'].field_make_card_link.value ?  true : false %}
+
+  {% if card_link %} <a href="{{ item['#paragraph'].field_button.0.url }}"
+                        class="text-no-underline card-link"> {% endif %}
+  <div class="usa-card__container">
+    <header class="usa-card__header">
+      <h2 class="usa-card__heading">{{ item['#paragraph'].field_card_title.value }}</h2>
+    </header>
+
+    <div class="usa-card__media">
+      {% if item['#paragraph'].field_card_image.entity.field_media_image %}
+        {% set indent_media = item['#paragraph'].field_indent_media.value ? ' usa-card__media--inset' %}
+        {% set extend_media = item['#paragraph'].field_extend_media.value ? ' usa-card__media--exdent' %}
+        <div class="usa-card__img{{ indent_media }}{{ extend_media }}">
+          {{ item['#paragraph'].field_card_image[0]|view }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if item['#paragraph'].field_text.value %}
+      <div class="usa-card__body">
+        {{ item['#paragraph'].field_text.value|raw }}
+      </div>
+    {% endif %}
+
+    {% if item['#paragraph'].field_button.uri and not card_link %}
+      <div class="usa-card__footer">
+        <a href="{{ item['#paragraph'].field_button.uri }}" class="usa-button">
+          {% set button_text = item['#paragraph'].field_button.title ?: 'Link Text' %}
+          {{ button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+  {% if card_link %} </a> {% endif %}

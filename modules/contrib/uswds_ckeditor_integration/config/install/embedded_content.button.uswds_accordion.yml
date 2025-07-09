@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: uswds_accordion
+label: USWDS Accordion
+settings:
+  label_singular: 'accordion'
+  submit_button_text: ''
+  modal_title: ''
+  conditions: uswds_accordion
+  icon: |
+    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 457 469.28"><path d="M62.29,53.36l330.34-.23c10.38.89,16.48,6.99,17.38,17.37v328.25c-.9,10.4-7.01,16.49-17.38,17.37H65.14c-10.56-.36-17.24-6.94-18.14-17.37V70.51c.81-9.41,5.89-15.48,15.29-17.15ZM159.57,203.16c-11.23,1.94-15.98,17.05-9.24,25.86,22.2,19.79,43.09,47.74,65.81,66.24,7.88,6.42,15.67,7.35,23.96.77,18.82-22.35,47.45-42.81,65.25-65.25,13.98-17.62-7.47-37.44-23.97-23.19l-53.16,52.47-53.41-53.21c-4.29-3.76-9.7-4.65-15.24-3.7Z"/></svg>
+  dialog_settings:
+    width: 1500px
+    height: auto
+    renderer: modal

@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Install functions for the uswds_ckeditor_integration module.
+ */
+
+/**
+ * Fix prefixes.
+ */
+function uswds_ckeditor_integration_update_103001(): void {
+  $config = \Drupal::configFactory()->getEditable('uswds_ckeditor_integration.settings');
+  if (!$config->get('breakpoints')) {
+    return;
+  }
+
+  $breakpoints = $config->get('breakpoints');
+  foreach ($breakpoints as $key => $breakpoint) {
+    $breakpoints[$key]['prefix'] = str_replace('_', '-', $breakpoint['prefix']);
+  }
+  $config->set('breakpoints', $breakpoints);
+  $config->save();
+}
+
+/**
+ * Fix prefixes.
+ */
+function uswds_ckeditor_integration_update_103002(): void {
+  $config = \Drupal::configFactory()->getEditable('uswds_ckeditor_integration.settings');
+  if (!$config->get('breakpoints')) {
+    return;
+  }
+
+  $breakpoints = $config->get('breakpoints');
+  foreach ($breakpoints as $key => $breakpoint) {
+    $breakpoints[$key]['prefix'] = str_replace('_', '-', $breakpoint['prefix']);
+  }
+  $config->set('breakpoints', $breakpoints);
+  $config->save();
+}
+
+/**
+ * Enable embedded_content.
+ */
+function uswds_ckeditor_integration_update_103003(): void {
+  $installer = \Drupal::service('module_installer');
+  $installer->install(['embedded_content']);
+}

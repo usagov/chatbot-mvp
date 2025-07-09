@@ -1,0 +1,35 @@
+{% set accordion_class = [
+  'usa-accordion',
+  bordered ? ' usa-accordion--bordered',
+  multiselect ? ' usa-accordion--multiselectable'
+]
+%}
+
+{% if multiselect %}
+  {% set attributes = attributes.setAttribute('data-allow-multiple', '') %}
+{% endif %}
+
+{% if startcollapsed == 1 %}
+  {% set collapsed = startcollapsed ? 'false' %}
+{% else %}
+  {% set collapsed = 'true' %}
+{% endif %}
+
+<div{{ attributes.addClass(accordion_class) }}>
+  {% for key,item in items %}
+    <h4 class="usa-accordion__heading">
+      <button
+        type="button"
+        class="usa-accordion__button"
+        aria-expanded="{{ collapsed }}"
+        aria-controls="{{ key }}">
+        {{ item['#heading'] }}
+      </button>
+    </h4>
+    <div id="{{ key }}" class="usa-accordion__content usa-prose">
+      <p>
+        {{ item['#body'] }}
+      </p>
+    </div>
+  {% endfor %}
+</div>

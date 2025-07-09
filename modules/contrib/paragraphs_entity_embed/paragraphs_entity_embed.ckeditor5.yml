@@ -1,0 +1,34 @@
+paragraphs_entity_embed_paragraphsEmbed:
+  provider: paragraphs_entity_embed
+  # Configuration that will be sent to CKEditor 5 JavaScript plugins.
+  ckeditor5:
+    plugins:
+      - embeddedParagraph.ParagraphsEmbed
+    config:
+      embeddedParagraph:
+        openDialog:
+          func:
+            name: Drupal.ckeditor5.openDialog
+            invoke: false
+  drupal:
+    label: Paragraphs
+    # The library loaded while using the editor.
+    library: paragraphs_entity_embed/dialog_editor5
+    # The library loaded when configuring the text format using this plugin.
+    admin_library: paragraphs_entity_embed/dialog_editor5
+    # The items will be added dynamically to the toolbar.
+    # See paragraphs_entity_embed_ckeditor5_plugin_info_alter().
+    toolbar_items: []
+    # If the plugin does not provide elements, set this as
+    # `elements: false`
+    elements:
+      - <drupal-paragraph>
+      - <drupal-paragraph data-embed-button data-entity-label data-paragraph-id data-paragraph-revision-id>
+    # *Additional configuration properties*
+    # conditions: for setting additional criteria that must be met for the
+    #   plugin to be active.
+    conditions:
+      filter: paragraphs_entity_embed
+    # class: Optional PHP class that makes it possible for the plugin to provide
+    #   dynamic values, or a configuration UI.
+    class: Drupal\paragraphs_entity_embed\Plugin\CKEditor5Plugin\DrupalParagraph

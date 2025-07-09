@@ -1,0 +1,5 @@
+services:
+  usagov_staticsite_ingest.commands:
+    class: Drupal\usagov_chatbot\Commands\ChatbotCommands
+    tags:
+      - { name: drush.command }

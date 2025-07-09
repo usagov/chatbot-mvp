@@ -1,0 +1,17 @@
+name: Paragraphs Entity Embed
+type: module
+description: 'Allows for paragraph entities to be embedded as items into the CKEditor.'
+core_version_requirement: ^9.3 || ^10
+package: Filters
+
+# Required modules
+dependencies:
+  - drupal:ckeditor5
+  - embed:embed
+  - entity_embed:entity_embed
+  - paragraphs:paragraphs
+
+# Information added by Drupal.org packaging script on 2023-12-05
+version: '3.0.1'
+project: 'paragraphs_entity_embed'
+datestamp: 1701799569

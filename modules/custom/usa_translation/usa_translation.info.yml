@@ -1,0 +1,4 @@
+name: 'USA Translation'
+type: module
+description: 'Functionality related to translation.'
+core_version_requirement: ^9 || ^10
