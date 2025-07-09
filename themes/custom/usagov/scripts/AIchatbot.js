@@ -17,13 +17,13 @@ function chatbotToogle() {
         chatbotContainer.classList.remove("chat-open");
         chatbotContainer.classList.add("chat-collapsed");
         chatbotContainer.style.transform = "translateY(" + chatbotBody.offsetHeight + "px)";
-        chatbotToogle.style.backgroundImage = "url(./themes/custom/usagov/assets/img/usa-icons/add.svg)";
+        chatbotToogle.style.backgroundImage = "url(./themes/custom/usagov/assets/img/usa-icons/add-white.png)";
     }
     else {
         chatbotContainer.classList.remove("chat-collapsed");
         chatbotContainer.classList.add("chat-open");
         chatbotContainer.style.transform = "translateY(0)";
-        chatbotToogle.style.backgroundImage = "url(./themes/custom/usagov/assets/img/usa-icons/remove.svg)";
+        chatbotToogle.style.backgroundImage = "url(./themes/custom/usagov/assets/img/usa-icons/remove-white.png)";
     }
 
 }
@@ -98,6 +98,28 @@ function sendSuggestion(element) {
 }
 
 /**
+ * Handles the Enter key press event to navigate to the last message in the chat interface.
+ *
+ *  @param {Event} event - The keydown event triggered by the user pressing a key.
+ *
+ * This function:
+ * 1. Prevents the default action of the Enter key.
+ * 2. Checks if the Enter key is pressed (key code 13).
+ * 3. If pressed, scrolls to the last message in the chat interface by setting the window location to the last message's ID.
+ * This allows users to quickly jump to the last message in the chat history.
+ */
+function goToLastMessage(event) {
+    'use strict';
+
+    event.preventDefault();
+    if (event.key === "Enter" || event.keyCode === 13) {
+        // If the Enter key is pressed, scroll to the last message.
+        window.location.href = "#usagov-ai-chatbot-last-message";
+    }
+
+}
+
+/**
  * Observes the last message in the chat interface to determine if it is visible in the viewport.
  *
  * This function:
@@ -114,10 +136,12 @@ const lastMessageObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             // Last message is visible
             scrollElement.style.display = "none";
+            scrollElement.removeAttribute("tabindex");
         }
         else {
             // Last message is hidden
             scrollElement.style.display = "flex";
+            scrollElement.setAttribute("tabindex", "0");
         }
     });
 },
@@ -149,7 +173,7 @@ async function handleUserMessage(userMessage) {
     const messageContainer = document.getElementsByClassName("usagov-ai-chatbot-messages")[0];
 
     // Create a message element for the user's message.
-    const newUserMessageElement = createMessage(true, userMessage, false);
+    const newUserMessageElement = createMessage(true, userMessage, false, null);
 
     // Remove the message suggestions after the first message.
     if (document.getElementsByClassName("usagov-ai-chatbot-suggestions")[0].style.display !== "none") {
@@ -163,7 +187,7 @@ async function handleUserMessage(userMessage) {
     const aiResponse = await getAIResponse(userMessage, messageContainer);
 
     // Create a message element for the user's message.
-    const newBotMessageElement = createMessage(false, aiResponse, false);
+    const newBotMessageElement = createMessage(false, aiResponse, false, null);
 
     // Remove the loader so it can be replaced by the new message.
     document.getElementById("loader-container").remove();
@@ -195,16 +219,51 @@ async function getAIResponse(userMessage, messageContainer) {
 
     messageContainer.appendChild(loaderElement.body.firstChild);
 
-    const requestBody = JSON.stringify({"userMessage": userMessage});
+    // Request when Drupal module is being used.
+
+    // const requestBody = JSON.stringify({"userMessage": userMessage});
+
+    // const requestOptions = {
+    //     "method": "POST",
+    //     "headers": {"Content-Type": "application/json"},
+    //     "body": requestBody
+    // };
+
+    // try {
+    //     const response = await fetch("/usagov-ai", requestOptions);
+    //     const result = await response.text();
+
+    //     // Return the AI response.
+    //     return JSON.parse(result).response;
+
+    // }
+    // catch (error) {
+    //     console.error(error);
+    // };
+
+    // Request when Drupal module is not being used and we are using the Ollama server directly.
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+    "model": "llama3.2",
+    "prompt": userMessage,
+    "stream": false,
+    "options": {
+    "num_thread": 8,
+    "num_ctx": 2024
+    }
+    });
 
     const requestOptions = {
         "method": "POST",
-        "headers": {"Content-Type": "application/json"},
-        "body": requestBody
+        "headers": myHeaders,
+        "body": raw,
+        "redirect": "follow"
     };
 
     try {
-        const response = await fetch("/usagov-ai", requestOptions);
+        const response = await fetch("https://ob.straypacket.com/api/generate", requestOptions);
         const result = await response.text();
 
         // Return the AI response.
@@ -224,7 +283,7 @@ async function getAIResponse(userMessage, messageContainer) {
  * @param {boolean} [fromLocalStorage] - Indicates if the message is being created from localStorage data.
  * @returns {HTMLElement} A DOM element containing the avatar and message bubble, ready to be added into the chat container.
  */
-function createMessage(isUser, message, fromLocalStorage) {
+function createMessage(isUser, message, fromLocalStorage, messageDate) {
     'use strict';
     // Convert the text to html since it has the format of a Markdown.
     const converter = new showdown.Converter();
@@ -241,7 +300,7 @@ function createMessage(isUser, message, fromLocalStorage) {
     messageTextElement.classList.add("text");
     messageTextElement.innerHTML = htmlMessage;
 
-    var dateConstructor = new Date();
+    var dateConstructor = messageDate ? new Date(messageDate) : new Date();
     var time = dateConstructor.toLocaleString('en-US', {'hour': 'numeric', 'minute': 'numeric', 'hour12': true});
     messageTimeElement.classList.add("usagov-ai-chatbot-message-time");
     messageTimeElement.innerHTML = time;
@@ -269,7 +328,7 @@ function createMessage(isUser, message, fromLocalStorage) {
 
         // Configure the avatar for the user.
         messageAvatarElement.classList.add("message-image", "user");
-        messageAvatarElement.src = "/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-user-avatar.png";
+        messageAvatarElement.src = "/themes/custom/usagov/images/chatbot/usagov-user-avatar.png";
         messageAvatarElement.alt = "USA.gov User Avatar";
 
         // Add the avatar and text in the correct order for the user's messages.
@@ -297,7 +356,7 @@ function createMessage(isUser, message, fromLocalStorage) {
 
         // Configure the avatar for the bot.
         messageAvatarElement.classList.add("message-image", "bot");
-        messageAvatarElement.src = "/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png";
+        messageAvatarElement.src = "/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png";
         messageAvatarElement.alt = "USA.gov Chatbot Avatar";
 
         // Add the avatar and text in the correct order for the bot's messages.
@@ -423,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const messageContainer = document.getElementsByClassName("usagov-ai-chatbot-messages")[0];
 
                 // Create a message element for the user's message.
-                const newUserMessageElement = createMessage(isUser, message.content, true);
+                const newUserMessageElement = createMessage(isUser, message.content, true, message.date);
 
                 // Add the user's message element to the chatbot.
                 messageContainer.appendChild(newUserMessageElement);

@@ -46,8 +46,6 @@
 <link rel="stylesheet" media="all" href="/modules/custom/usa_admin_styles/css/usa_admin_styles.css?sz3jh0">
 <link rel="stylesheet" media="all" href="/site/usagov/chatbot-mvp/themes/custom/usagov/css/styles.css?sz3jh0">
 
-  
-
       <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0007/9651.js" async="async"></script>
   
     <script id="taxonomy-data">
@@ -346,10 +344,10 @@
     <button id="usagov-ai-chatbot-toogle" onclick="chatbotToogle()"></button>
   </div>
   <div class="usagov-ai-chatbot-body">
-    <div class="usagov-ai-chatbot-messages">
+    <div class="usagov-ai-chatbot-messages" tabindex="-1">
       <div class="usagov-ai-chatbot-disclaimer">
         <div class="usagov-ai-chatbot-disclaimer-title">
-          July 08
+          July 09
         </div>
         <div class="usagov-ai-chatbot-disclaimer-body">
           AI chatbots can make mistakes. Please verify important information.
@@ -360,7 +358,7 @@
           <img class="message-image bot" src="/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png" alt="USA.gov Chatbot Avatar">
           <div class="text">Welcome to USAGov’s assistance chatbot. I’m available 24/7. Would you like help with a common topic below?</div>
         </div>
-        <div class="usagov-ai-chatbot-message-time">04:07 PM</div>
+        <div class="usagov-ai-chatbot-message-time">02:59 PM</div>
       </div>
       <div class="usagov-ai-chatbot-suggestions">
         <button id="unclaimedMoney" class="usagov-ai-chatbot-suggestion-button" onclick="sendSuggestion(this)">Unclaimed money</button>
@@ -369,14 +367,13 @@
       </div>
     </div>
 
-    <a href="#usagov-ai-chatbot-last-message">
-      <div id="usagov-ai-chatbot-view-last-message">
-        <img src="/site/usagov/chatbot-mvp/themes/custom/usagov/images/Reimagined_Jump_to_Arrow.svg" alt>
-        <span>View last message</span>
-      </div>
-    </a>
+    <div id="usagov-ai-chatbot-view-last-message" onclick="window.location.href=&quot;#usagov-ai-chatbot-last-message&quot;" onkeypress="goToLastMessage(event)">
+      <img src="/site/usagov/chatbot-mvp/themes/custom/usagov/images/Reimagined_Jump_to_Arrow.svg" alt>
+      <span>View last message</span>
+    </div>
 
-    <div class="usagov-ai-chatbot-input-container">
+
+    <div class="usagov-ai-chatbot-input-container" tabindex="-1">
       <input type="text" id="user-message" class="usa-input usagov-ai-chatbot-input" placeholder="Type a message..." onkeypress="handleEnter(event)">
       <button id="submitMessage" class="usa-button usagov-ai-chatbot-input-button" onclick="sendMessage()">Send</button>
     </div>
@@ -398,8 +395,8 @@
 	                  <div class="usa-navbar">
 	<div class="usa-logo" id="extended-logo">
 		<em class="usa-logo-text">
-			<a href="/site/usagov/chatbot-mvp/" title="USAGov Logo">
-				<img src="/site/usagov/chatbot-mvp/themes/custom/usagov/images/USAGov_logo_51px.png" srcset="/site/usagov/chatbot-mvp/themes/custom/usagov/images/USAGov_Logo_80px.png 80w,
+			<a href="/" title="USAGov Logo">
+				<img src="/site/usagov/chatbot-mvp/themes/custom/usagov/images/USAGov_logo_51px.png" srcset="/themes/custom/usagov/images/USAGov_Logo_80px.png 80w,
 									/themes/custom/usagov/images/USAGov_Logo_51px.png 51w" sizes="(min-width: 1024px) 80px, 51px" alt="USAGov Logo">
 			</a>
 		</em>
