@@ -17,13 +17,13 @@ function chatbotToogle() {
         chatbotContainer.classList.remove("chat-open");
         chatbotContainer.classList.add("chat-collapsed");
         chatbotContainer.style.transform = "translateY(" + chatbotBody.offsetHeight + "px)";
-        chatbotToogle.style.backgroundImage = "url(./themes/custom/usagov/assets/img/usa-icons/add-white.png)";
+        chatbotToogle.style.backgroundImage = "url(./site/usagov/chatbot-mvp/themes/custom/usagov/assets/img/usa-icons/add-white.png)";
     }
     else {
         chatbotContainer.classList.remove("chat-collapsed");
         chatbotContainer.classList.add("chat-open");
         chatbotContainer.style.transform = "translateY(0)";
-        chatbotToogle.style.backgroundImage = "url(./themes/custom/usagov/assets/img/usa-icons/remove-white.png)";
+        chatbotToogle.style.backgroundImage = "url(./site/usagov/chatbot-mvp/themes/custom/usagov/assets/img/usa-icons/remove-white.png)";
     }
 
 }
@@ -283,7 +283,7 @@ function createMessage(isUser, message, fromLocalStorage, messageDate) {
 
         // Configure the avatar for the user.
         messageAvatarElement.classList.add("message-image", "user");
-        messageAvatarElement.src = "/themes/custom/usagov/images/chatbot/usagov-user-avatar.png";
+        messageAvatarElement.src = "/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-user-avatar.png";
         messageAvatarElement.alt = "USA.gov User Avatar";
 
         // Add the avatar and text in the correct order for the user's messages.
@@ -311,7 +311,7 @@ function createMessage(isUser, message, fromLocalStorage, messageDate) {
 
         // Configure the avatar for the bot.
         messageAvatarElement.classList.add("message-image", "bot");
-        messageAvatarElement.src = "/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png";
+        messageAvatarElement.src = "/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png";
         messageAvatarElement.alt = "USA.gov Chatbot Avatar";
 
         // Add the avatar and text in the correct order for the bot's messages.
