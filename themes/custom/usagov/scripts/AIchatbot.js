@@ -219,60 +219,15 @@ async function getAIResponse(userMessage, messageContainer) {
 
     messageContainer.appendChild(loaderElement.body.firstChild);
 
-    // Request when Drupal module is being used.
-
-    // const requestBody = JSON.stringify({"userMessage": userMessage});
-
-    // const requestOptions = {
-    //     "method": "POST",
-    //     "headers": {"Content-Type": "application/json"},
-    //     "body": requestBody
-    // };
-
-    // try {
-    //     const response = await fetch("/usagov-ai", requestOptions);
-    //     const result = await response.text();
-
-    //     // Return the AI response.
-    //     return JSON.parse(result).response;
-
-    // }
-    // catch (error) {
-    //     console.error(error);
-    // };
-
-    // Request when Drupal module is not being used and we are using the Ollama server directly.
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-    "model": "llama3.2",
-    "prompt": userMessage,
-    "stream": false,
-    "options": {
-    "num_thread": 8,
-    "num_ctx": 2024
-    }
-    });
-
-    const requestOptions = {
-        "method": "POST",
-        "headers": myHeaders,
-        "body": raw,
-        "redirect": "follow"
-    };
-
+    const chatbotService = window.ChatbotService;
+    const bot = new chatbotService();
     try {
-        const response = await fetch("https://ob.straypacket.com/api/generate", requestOptions);
-        const result = await response.text();
+        const responseJSON = await bot.askChat('usagovsite', userMessage, false);
+        return responseJSON.response
 
-        // Return the AI response.
-        return JSON.parse(result).response;
-
+    } catch (error) {
+        console.error('Failed to get chat response:', error);
     }
-    catch (error) {
-        console.error(error);
-    };
 }
 
 /**
@@ -328,7 +283,7 @@ function createMessage(isUser, message, fromLocalStorage, messageDate) {
 
         // Configure the avatar for the user.
         messageAvatarElement.classList.add("message-image", "user");
-        messageAvatarElement.src = "/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-user-avatar.png";
+        messageAvatarElement.src = "/themes/custom/usagov/images/chatbot/usagov-user-avatar.png";
         messageAvatarElement.alt = "USA.gov User Avatar";
 
         // Add the avatar and text in the correct order for the user's messages.
@@ -356,7 +311,7 @@ function createMessage(isUser, message, fromLocalStorage, messageDate) {
 
         // Configure the avatar for the bot.
         messageAvatarElement.classList.add("message-image", "bot");
-        messageAvatarElement.src = "/site/usagov/chatbot-mvp/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png";
+        messageAvatarElement.src = "/themes/custom/usagov/images/chatbot/usagov-bot-avatar.png";
         messageAvatarElement.alt = "USA.gov Chatbot Avatar";
 
         // Add the avatar and text in the correct order for the bot's messages.
