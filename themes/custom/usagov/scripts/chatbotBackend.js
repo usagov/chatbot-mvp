@@ -30,9 +30,9 @@ import * as chromadb from 'https://esm.run/chromadb';
 
 export class ChatbotService {
     constructor() {
-        this.chromaHost = 'cd.straypacket.com';
+        this.chromaHost = 'cd2.straypacket.com';
         this.chromaPort = 443;
-        this.ollamaHost = 'https://ob.straypacket.com';
+        this.ollamaHost = 'https://ob2.straypacket.com';
         
         // Initialize ChromaDB and Ollama client
         this.chroma = new chromadb.ChromaClient({ "host": `${this.chromaHost}`, "port":`${this.chromaPort}`, "ssl" : true });
